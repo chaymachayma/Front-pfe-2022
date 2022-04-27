@@ -1,0 +1,150 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar >     
+     <mat-icon style="margin-left:90px; font-size: 115px;" >person</mat-icon>     
+    </mat-toolbar>
+<br><br>
+    <mat-toolbar-row> 
+      <span style="margin-top:4px; font-size: 27px; margin-left:60px; color: white;">Administrateur</span>
+    </mat-toolbar-row>  
+  <hr>
+    <mat-nav-list>
+      <a mat-list-item routerLink="dashboard"> 
+      
+        <mat-icon >home</mat-icon>
+      <span style=" color: white;">Tableau de bord</span></a>
+  
+
+      <a mat-list-item routerLink="gestion-parametrages"> 
+        <mat-icon>people</mat-icon>
+        <span style=" color: white;">les Comptes Utilisateurs</span></a>
+    
+      <a mat-list-item  routerLink="gestionDirection">
+        <mat-icon >account_balance</mat-icon>
+        <span style="  color: white;" >les Directions Regionales</span></a>
+     
+        <a mat-list-item routerLink="gestion-structure">
+       <mat-icon >account_balance</mat-icon>
+        <span style=" color: white;;"> les Structures Centrales</span></a>
+     
+        <a mat-list-item routerLink="gestionAgence">
+       <mat-icon >business</mat-icon>
+        <span style="  color: white;">les Agences</span></a>
+     
+        <a mat-list-item routerLink="gestionNomenclature">
+          <mat-icon >description</mat-icon>
+        <span style=" color: white;">la nomanclature</span></a>
+     
+        <a mat-list-item routerLink="/">
+      <mat-icon >input</mat-icon>
+       <span style=" color: white;">Déconnexion</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="imggg">
+      <span class="centre">Banque Extérieure d'Algérie(BEA)</span>
+    </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!--mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>
+       <img
+        width="40"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOKs1LAWQFQXQHFCJthgpBeR6U5Bbyoyr68Q&usqp=CAU"
+       />
+       Administrateur  </mat-toolbar>
+      <mat-toolbar-row> 
+        <p> <strong><span style=" color:#32CD32;">*</span></strong>
+        <span style=" color:#747070;">En ligne</span>
+       </p>
+      </mat-toolbar-row>  
+    <hr>
+      <mat-nav-list>
+        <a matlist-item ="['dashboard']"> 
+          <img
+          width="30"
+          src="data:image/png;base64,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"
+          /> 
+        Tableau de bord</a>
+  
+  
+  
+        <a matlist-item ="['compte-utilisateur']"> 
+          <img
+          width="30"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0iFTsRagcxqIHDkchvDQWFnLWswn_q6IUEGQTJBNlMofExPFGLNY3z6YsAWs0ytM86bM&usqp=CAU"
+          /> 
+        les Comptes Utilisateurs</a>
+      
+        <a mat-list-item href="#">
+          <img
+          width="33"
+          src="https://img.freepik.com/vecteurs-libre/dessin-anime-retro-banque-palais-justice-illustration-colonnes-isolee-blanc_53562-8133.jpg"
+         />
+          les Directions Regionales</a>
+        <a mat-list-item href="#">
+          <img
+          width="30"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP4z51pNzWVmDY5pj0vrXY6PXsFl_AzWvNsxlc6jbyYa2i1NTHPfr_iwWdzHcWa74gSqo&usqp=CAU"
+         />
+          les Structures Centrales</a>
+        <a mat-list-item href="#">
+          <img
+          width="30"
+          src="https://bankeo.info/wp-content/uploads/2014/09/Banque-Bank.png"
+         />
+          les Agences</a>
+        <a mat-list-item href="#">
+          <img
+          width="30"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT06TOQpdWeKAzyZVm7h0D0CvfPtZFo9PhrkCPoNSeci8fayCv5qf-8IUroPh0b9rOEu-A&usqp=CAU"
+         />
+          la nomanclature</a>
+        <a mat-list-item href="#">
+          <img
+          width="22"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAJgDyOV_p4gOVRf4ReIlhOsSEEiGLwYdxwH8xIFGBLWHRlDiD5I8b2bwL9Paek-ZwUZg&usqp=CAU"
+         />
+          Déconnexion</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      
+       
+        <span class="centre">BANQUE EXTÉRIEUR D'ALGÉRIE(BEA)</span>
+      </mat-toolbar>
+      <ng-content></ng-content>
+      <!-- Add Content Here >
+    </mat-sidenav-content>
+  </mat-sidenav-container-->
