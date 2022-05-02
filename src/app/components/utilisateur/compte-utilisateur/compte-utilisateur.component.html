@@ -47,14 +47,13 @@
 
 
 <mat-form-field  appearance="outline">
-<mat-label for="direction">Libellé direction:</mat-label>
-<mat-select formConroleName="direction"required #direction="ngModel" [class.is-invalid]="direction.invalid && direction.touched" name="direction" [(ngModel)]="compte.direction">
-    <mat-option value="Direction Regionale" >Direction Regionale</mat-option>
-    <mat-option value="Direction Centrale" selected>Direction Centrale</mat-option>
-    <mat-option value="Agence">Agence</mat-option>
+  <mat-label  for="libelleDirection" > libelle Direction</mat-label>
+  <mat-select placeholder="" name="libelle" [(ngModel)]="compte.libelleDirection" required #libelleDirection="ngModel"
+  [class.is-invalid]="libelleDirection.invalid && libelleDirection.touched">
+<mat-option *ngFor="let lieu of lieux" value="{{lieu.id}}">{{lieu.libelleDirection}}</mat-option >
 </mat-select>
-<small class="text-danger" [class.d-none]="direction.valid || direction.untouched">Please choose a direction</small> 
-</mat-form-field>
+  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">Expediteur 1ere age is required fied</small> 
+  </mat-form-field>
 
 
 <div mat-dialog-actions [align]="'end'">

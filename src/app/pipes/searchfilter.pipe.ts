@@ -13,7 +13,7 @@ export class SearchfilterPipe implements PipeTransform {
    return comptes.filter(compte=>
     compte.prenom.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) ||
     compte.nom.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) ||
-    compte.direction.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
+   // compte.libelleDirection.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())||
     compte.email.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
     );
   }

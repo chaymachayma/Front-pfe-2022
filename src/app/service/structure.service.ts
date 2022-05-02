@@ -42,7 +42,7 @@ export class StructureService {
   }
 
   sendmail(data:any){
-    const api="http://localhost:8083/api/mail";
+    const api="http://localhost:8083/api/mail/ecart";
     return this._http.post(api,data);
   }
 }

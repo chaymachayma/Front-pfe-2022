@@ -42,6 +42,9 @@ import { GestionParametragesComponent } from './components/utilisateur/gestion-p
 import { UpdateCompteComponent } from './components/utilisateur/update-compte/update-compte.component';
 import { DemandeDeVersementComponent } from './components/Traitement 1ere age/demande-de-versement/demande-de-versement.component';
 import { PlanEnlevementComponent } from './components/Traitement 1ere age/plan-enlevement/plan-enlevement.component';
+import { ReceptionPhysiqueDocComponent } from './components/Traitement 2eme age/reception-physique-doc/reception-physique-doc.component';
+import { AjouterReceptionDocComponent } from './components/Traitement 2eme age/ajouter-reception-doc/ajouter-reception-doc.component';
+import { InscriptionDocRecusComponent } from './components/Traitement 2eme age/inscription-doc-recus/inscription-doc-recus.component';
 
 
 const routes: Routes = [
@@ -159,9 +162,21 @@ const routes: Routes = [
     {
       path:'dashboard',
       component: DashboardComponent
+    },
+    {
+      path:'receptionPhy2eme',
+      component:ReceptionPhysiqueDocComponent
+    },
+    {
+      path:'AjouterReceptionDoc',
+      component: AjouterReceptionDocComponent
+    },
+    {
+      path:'InscriptionDocRecus',
+      component: InscriptionDocRecusComponent
     }
    
-   
+  
     ]
   },
 

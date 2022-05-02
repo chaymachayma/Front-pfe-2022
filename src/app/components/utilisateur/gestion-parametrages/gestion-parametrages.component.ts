@@ -25,7 +25,7 @@ export class GestionParametragesComponent implements OnInit {
    prenom!:string;
    searchValue!:string;
   
-   displayedColumns: string[] = ['id', 'nom', 'prenom','email', 'direction','action'];
+   displayedColumns: string[] = ['id', 'nom', 'prenom','email', 'libelleDirection','action'];
    dataSource!: MatTableDataSource<any>;
  
    @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -17,7 +17,7 @@ export class CompteUtilisateurComponent implements OnInit {
   //em:string="";
   msg='';
   productForm !: FormGroup;
-  
+  lieux!:Compte[];
   constructor(private _service:RegistrationService,private _router:Router,private formBuilder : FormBuilder) { }
   ngOnInit(): void {
     this.productForm=this.formBuilder.group({
@@ -44,7 +44,7 @@ export class CompteUtilisateurComponent implements OnInit {
              //  this.compte.matricule = "";
                 this.compte.nom = "";
                 this.compte.prenom = "";       
-                this.compte.direction = ""; 
+               // this.compte.direction = ""; 
                 this.compte.email=""; 
                 this.compte.password =""; 
               }

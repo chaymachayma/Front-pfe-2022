@@ -58,5 +58,6 @@ export class ListeDemandeVersementComponent implements OnInit {
       onNoClickk(item :any): void {
         this.dialogRef.close();
         this.opendialog(item)
+      
       }
 }

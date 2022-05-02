@@ -81,6 +81,9 @@ import { SearchfilterPipe } from './pipes/searchfilter.pipe';
 import { DemandeDeVersementComponent } from './components/Traitement 1ere age/demande-de-versement/demande-de-versement.component';
 import { InventaireDocument2emeageComponent } from './components/Traitement 1ere age/inventaire-document2emeage/inventaire-document2emeage.component';
 import { PlanEnlevementComponent } from './components/Traitement 1ere age/plan-enlevement/plan-enlevement.component';
+import { ReceptionPhysiqueDocComponent } from './components/Traitement 2eme age/reception-physique-doc/reception-physique-doc.component';
+import { AjouterReceptionDocComponent } from './components/Traitement 2eme age/ajouter-reception-doc/ajouter-reception-doc.component';
+import { InscriptionDocRecusComponent } from './components/Traitement 2eme age/inscription-doc-recus/inscription-doc-recus.component';
 
 @NgModule({
   declarations: [
@@ -139,6 +142,9 @@ import { PlanEnlevementComponent } from './components/Traitement 1ere age/plan-e
     DemandeDeVersementComponent,
     InventaireDocument2emeageComponent,
     PlanEnlevementComponent,
+    ReceptionPhysiqueDocComponent,
+    AjouterReceptionDocComponent,
+    InscriptionDocRecusComponent,
   
 
     
