@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Envoi d'un nouveau plan d'enlévement</h1>
+<br>
+<div mat-dialog-content>
+<form #enregForm="ngForm" (ngSubmit)="envoyer()">
+
+    <mat-form-field  appearance="outline">
+        <mat-label  for="codes" >Code de plan d'enlévement:</mat-label>
+        <input  matInput placeholder="" type="number" id="code" 
+         name="codee" [(ngModel)]="planEnlevement.code"  required #code="ngModel"         
+        [class.is-invalid]="code.invalid && code.touched"   >
+        <small class="text-danger" [class.d-none]=" code.valid ||  code.untouched">Code de plan d'enlevement is required field</small> 
+        </mat-form-field>
+
+<mat-form-field  appearance="outline">
+    <mat-label  for="date_" >Date d'enlévement : </mat-label>
+    <input  matInput placeholder="" type="date" id=" date_" 
+     name="datee_" [(ngModel)]="planEnlevement.date_"  required #date_="ngModel"           
+    [class.is-invalid]=" date_.invalid && date_.touched"   >
+    <small class="text-danger" [class.d-none]=" date_.valid || date_.untouched">Date d'enlévement is required field</small> 
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+        <mat-label  for="materiels" >Moyens matériels: </mat-label>
+        <input matInput placeholder="" type="text" id="materiel" 
+         name="materiell" [(ngModel)]="planEnlevement.materiel"  required #materiel="ngModel"           
+        [class.is-invalid]="materiel.invalid && materiel.touched"   >
+        <small class="text-danger" [class.d-none]="materiel.valid ||materiel.untouched">Moyens matériels is required field</small> 
+        </mat-form-field>
+
+
+        <mat-form-field  appearance="outline">
+            <mat-label  for="humain" >Moyens humains: </mat-label>
+            <input matInput placeholder="" type="text" id="humain" 
+             name="humainn" [(ngModel)]="planEnlevement.humain"  required #humain="ngModel"           
+            [class.is-invalid]="humain.invalid &&humain.touched"   >
+            <small class="text-danger" [class.d-none]="humain.valid || humain.untouched">Moyens humains is required field</small> 
+            </mat-form-field>
+                                
+                    <div mat-dialog-actions [align]="'end'">                     
+                        <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" type="Submit" (click)="opensweetalert()">Envoyer</button>
+            
+</div>
+<br><br>
+        
