@@ -45,4 +45,8 @@ export class StructureService {
     const api="http://localhost:8083/api/mail/ecart";
     return this._http.post(api,data);
   }
+  sendmaill(data:any){
+    const api="http://localhost:8083/api/mail";
+    return this._http.post(api,data);
+  }
 }

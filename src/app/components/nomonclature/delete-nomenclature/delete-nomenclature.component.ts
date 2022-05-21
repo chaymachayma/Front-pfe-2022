@@ -18,7 +18,7 @@ export class DeleteNomenclatureComponent implements OnInit {
     private route: ActivatedRoute,private router: Router, @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
-    this.  nomenclature = this.data. nomenclature;
+    this.nomenclature = this.data.nomenclature;
     if(this.id=this.route.snapshot.params['id']){
     this. nomenclature=new Nomenclature();
     this.service.getNomenclatureById(this.id).subscribe(
@@ -34,9 +34,10 @@ export class DeleteNomenclatureComponent implements OnInit {
         data=>{
           console.log(data);
           this. nomenclatures=this.service.getNomenclatures();
-          //this.router.navigate(['deletedirection  ',id]);
+          //this.router.navigate(['deletedirection ',id]);
         },
-        error=>console.error(error));
+        error=>console.error(error)
+        );
         window.location.reload()
      
     }

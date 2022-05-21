@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { planEnlevement } from 'src/app/models/structure';
+import { SuiviDocument } from 'src/app/models/suivi-document';
+
 import { StructureService } from 'src/app/service/structure.service';
 import Swal from 'sweetalert2';
+import { BordereauxComponent } from '../bordereaux/bordereaux.component';
 import { TraiterDemandeComponent } from '../traiter-demande/traiter-demande.component';
 
 @Component({
@@ -12,23 +16,44 @@ import { TraiterDemandeComponent } from '../traiter-demande/traiter-demande.comp
 })
 export class PlanEnlevementComponent implements OnInit {
  planEnlevement= new planEnlevement();
-  constructor(private service:StructureService,private dialog:MatDialog) { }
+ suividocument=new SuiviDocument()
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<PlanEnlevementComponent>,private service:StructureService,private dialog:MatDialog,private router:Router) { }
 
   ngOnInit(): void {
+    console.log(this.data,"hmmmmmmmmmmmmm")
+    this.suividocument=this.data[1]
   }
   
 envoyer(){
 const data={
   toEmail: "najjaramal220@gmail.com" ,
-  subject : "test" ,
-  body :  this.planEnlevement
+  subject : "test",
+  body :{
+    code:this.planEnlevement.code,
+    date:this.planEnlevement.date_,
+    materiel:this.planEnlevement.materiel,
+    humain:this.planEnlevement.humain
+
+    
+  } 
 
 }
-this.service.sendmail(data).subscribe(
+console.log(data,"data")
+this.service.sendmaill(data).subscribe(
   res=>console.log("emailsended"),
   err=>console.log(err)
 )
 }
+opendialog(item:any){
+   this.dialog.open(BordereauxComponent, {
+    width:'65%',
+    height:'45%',
+    data:[item,this.suividocument],
+   })
+   }
+
+  //this._router.navigate(['dashboard/demandedeversement']);
+  
 
 opensweetalert(){    
      Swal.fire(
@@ -37,6 +62,10 @@ opensweetalert(){
         'success'
        ).then( result => {
         console.log(result);
+        this.dialogRef.close()
+        this.opendialog(1)
+
+        //this.router.navigate(['/dashboard/bordereaux'])
       })
 }
 }

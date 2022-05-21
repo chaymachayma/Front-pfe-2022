@@ -7,42 +7,78 @@ import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import Swal from 'sweetalert2';
+import { TypeDirection } from 'src/app/models/type-direction';
+import { LieuArchive } from 'src/app/models/lieu-archive';
 @Component({
   selector: 'app-update-direction',
   templateUrl: './update-direction.component.html',
   styleUrls: ['./update-direction.component.css']
 })
 export class UpdateDirectionComponent implements OnInit {
-
+  selectedId3!:number
 id:any;
    direction :any;
-  
+   lieux!:LieuArchive[];
+   types!:TypeDirection[];
+   selectedId1!:number
+   selectedId2!:number
   constructor(  private service:DirectionService,private router:Router,private route:ActivatedRoute, 
     private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
    
-    this.direction=new Direction();
-   if( this.id=this.route.snapshot.params['id']){
-    this.service.getDirectionById(this.id).subscribe(
-      data=>{console.log(data)
-      this.direction=data;
-            },
-      error=>console.log(error));
-      
+  
+      /////
+      this.getLieu();
+      this.selectedId1=this.data.direction.lieu_d_archivage_1_ere_age.id ;
+      this.selectedId2=this.data.direction.lieu_d_archivage_2_eme_age.id ;
+     console.log(this.data.direction);
+     ////////
+     this.getType();
+     this.selectedId3=this.data.direction.typeDirection.id ;
+     console.log(this.selectedId2);
+    console.log(this.data.selectedId2);
 
-  }}
+  }
+  getType(){
+    this.service.getType().subscribe(
+    res=>this.types=res
+    )
+    }
+  getLieu(){
+    this.service.getLieu().subscribe(
+    res=>this.lieux=res
+    )
+    }
   
    onModif(){
-     this.service.updateDirection(this.data.id,this.data.direction).subscribe(
-    data=>console.log(data),error=>console.error());
-    this.direction=new Direction();
-   // this.router.navigate(['/updatedirection']);
+    console.log(this.data.direction,"avant")
+  this.service.getLieuById(this.selectedId1).subscribe(
+    res=> {
+      this.data.direction.lieu_d_archivage_1_ere_age=res;
+      this.service.getLieuById(this.selectedId2).subscribe(
+        res=>{
+          this.data.direction.lieu_d_archivage_2_eme_age=res;
+          this.service.getTypeById(this.selectedId3).subscribe(
+
+          res=>{this.data.direction.typeDirection=res;
+          this.service.updateDirection(this.data.direction.id,this.data.direction).subscribe(
+
+            data=>{
+                console.log(data,"data received")
+              },
+            error=>console.error());
+        }
+        
+      )
+    }
+  )
+    })
   }
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',
-      text: "Vous ne pourrez pas récupérer ce fichier imaginaire?",
+     
       icon:'warning',
       showCancelButton:true,
       confirmButtonText:'oui,modifiez-le!',
@@ -56,14 +92,14 @@ id:any;
       if (result.value) {
         Swal.fire(
           'modifié!',
-          'Votre fichier imaginaire a été modifié',
+        
           'success'
         )
       window.location.reload()
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        'Votre fichier imaginaire est en sécurité :)',
+        
         'error'
       )
 

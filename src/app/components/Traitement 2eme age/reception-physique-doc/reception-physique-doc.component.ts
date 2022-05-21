@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { SuiviDocumentService } from 'src/app/service/suivi-document.service';
 import { AjouterReceptionDocComponent } from '../ajouter-reception-doc/ajouter-reception-doc.component';
-import { data } from 'jquery';
+
 import { InscriptionDocRecusComponent } from '../inscription-doc-recus/inscription-doc-recus.component';
 
 
@@ -19,7 +19,8 @@ import { InscriptionDocRecusComponent } from '../inscription-doc-recus/inscripti
 export class ReceptionPhysiqueDocComponent implements OnInit {
 
   suividocument=new SuiviDoc2emeAge();
- 
+  date_De_creation_Du_Document:any;
+  //LocalDate:String=new Date().toLocaleString();
    Datedeversemnent2emeage:any;
    LocalDate:String=new Date().toLocaleString();
    doc:SuiviDoc2emeAge[]=[];
@@ -33,8 +34,6 @@ export class ReceptionPhysiqueDocComponent implements OnInit {
    constructor(private service:SuiviDocumentService,private _router:Router,private dialog:MatDialog) { }
  
    ngOnInit(): void {
-     //console.log(this.data,"item")
-     //this.suividocument=this.data
      this.service.getDocuments().subscribe(
        data=>{ console.log(data,"response recieved");      
        data.forEach((item:any)=>{      
@@ -49,39 +48,19 @@ export class ReceptionPhysiqueDocComponent implements OnInit {
    }
    opendialog(item :any){
      console.log(item,'hethi eli neb3ethou');
+     console.log("hne 7echetna biha")
     this.dialog.open(AjouterReceptionDocComponent, {
+
       width:'36%',
       data:[item]
      });
   }
 
+ opendialogg(){
+this._router.navigate(['/dashboard/InscriptionDocRecus'])
+ }
+ 
+ }
 
-  opendialogg(/*item :any*/){
-    //console.log(item,'inscription');
-   this.dialog.open(InscriptionDocRecusComponent, {
-     width:'45%',
-     //data:[item]
-    });
- }
-  /* 
-    getdate(){
-    this.LocalDate=new Date().toLocaleString();
-    this.dateDestruction=this.LocalDate;
-  
-    }*/
-  /*  applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
-  */
- }
- 
- function AjouteDateDestructionComponent(AjouteDateDestructionComponent: any, arg1: { width: string; }) {
-   throw new Error('Function not implemented.');
- }
- 
+
  

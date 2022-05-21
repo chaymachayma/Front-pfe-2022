@@ -12,5 +12,4 @@ export class DemandeDeVersement {
     destinataire!:LieuArchive
     expediteur!:Direction
     designation_nomenclature!:Nomenclature
-
 }

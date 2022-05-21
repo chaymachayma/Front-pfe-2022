@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 
 import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+//import { SignupComponent } from './signup/signup.component';
 import {AuthComponent} from "./auth.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatCardModule} from "@angular/material/card";
@@ -19,7 +19,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
   declarations: [
     AuthComponent,
     SigninComponent,
-    SignupComponent
+   // SignupComponent
   ],
   imports: [
     CommonModule,

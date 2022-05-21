@@ -3,12 +3,11 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SuiviDocument } from 'src/app/models/suivi-document';
 
 
 import { SuiviDocumentService } from 'src/app/service/suivi-document.service';
-import { AjoutDateDestructionComponent } from '../ajout-date-destruction/ajout-date-destruction.component';
 
 
 @Component({
@@ -17,6 +16,7 @@ import { AjoutDateDestructionComponent } from '../ajout-date-destruction/ajout-d
   styleUrls: ['./destruction-document.component.css']
 })
 export class DestructionDocumentComponent implements OnInit {
+ 
   doc:SuiviDocument[]=[];
  suividocument=new SuiviDocument()
   searchValue!:string;
@@ -29,11 +29,21 @@ export class DestructionDocumentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dateDestruction: any;
- constructor(private service:SuiviDocumentService,private _router:Router,private dialog:MatDialog,@Inject(MAT_DIALOG_DATA) public data: any) { }
+  id!:number
+ constructor(private route:ActivatedRoute,private service:SuiviDocumentService,private _router:Router ) { }
 
  ngOnInit(): void {
-  console.log(this.data)
-  this.dataSource=this.data
+  this.suividocument=new SuiviDocument()
+  this.id=this.route.snapshot.params['id']
+  console.log(this.id,"hetha id")
+  this.service.getDOcumentById(this.id).subscribe(
+    data=>{console.log(data,"gg")
+    this.suividocument=data;
+    this.dataSource=new MatTableDataSource([data]);
+    console.log(this.dataSource,"datasource")
+          },
+    error=>console.log(error));
+   
    }
   
    getdate(){
@@ -42,44 +52,9 @@ export class DestructionDocumentComponent implements OnInit {
  
    }
 
-/* openDialog() {
-   this.dialog.open(AjoutDateDestructionComponent, {
-    width:'35%'
-   });
- }*/
-
- 
- 
-/*
- openDialogg(item : any) { 
-
-   this.dialog.open(DeleteStructureComponent, {
-     width:'41%',
-     data : {
-       structure : item
-     }
-   });   
+ retour(){
+   this._router.navigate(['/dashboard/triDoc1ereage'])
  }
-
- 
- openDialoggg(item : any) {  
-   this.dialog.open(ConsulterStructureComponent, {
-     width:'41%',
-     data : {
-       structure : item
-     }
-   });
- }
-
-   openDialogggg(item : any) {  
-     this.dialog.open(UpdateStructureComponent, {
-       width:'45%',
-       data : {
-         structure : item
-       }
-     });
-
-   }*/
    applyFilter(event: Event) {
      const filterValue = (event.target as HTMLInputElement).value;
      this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -90,7 +65,4 @@ export class DestructionDocumentComponent implements OnInit {
    }
  
 }
-
-function AjouteDateDestructionComponent(AjouteDateDestructionComponent: any, arg1: { width: string; }) {
-  throw new Error('Function not implemented.');
-}
+ 

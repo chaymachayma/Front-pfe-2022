@@ -6,6 +6,7 @@ import { NomenclatureService } from 'src/app/service/nomenclature.service';
 import { MatDialog, MAT_DIALOG_DATA , MatDialogRef} from '@angular/material/dialog';
 import { TraiterDemandeComponent } from '../traiter-demande/traiter-demande.component';
 import { ListeDemandeVersementComponent } from '../liste-demande-versement/liste-demande-versement.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,14 +20,14 @@ export class DemandeDeVersementComponent implements OnInit {
   designation_Nomenclatures!:any[];
   demande=new DemandeDeVersement();
   msg='';
-  constructor(public dialogRef: MatDialogRef<DemandeDeVersementComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private _service:DemandeDeVersementService,private service:DirectionService,private serviice:NomenclatureService,private dialog:MatDialog) { }
+  constructor(private router:Router,public dialogRef: MatDialogRef<DemandeDeVersementComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private _service:DemandeDeVersementService,private service:DirectionService,private serviice:NomenclatureService,private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getDirections()
     console.log(this.Expediteurs)
     this.getNomenclatures()
     this.getLieux()
-    console.log(this.data , 'init data')
+    console.log(this.data ,'init data')
   }
 
 
@@ -56,6 +57,7 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
         console.log("amal",data) 
         console.log("reponse received");
         
+        
 },
        error =>{   
        console.log("exception occured");
@@ -73,6 +75,9 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
       
 
       })
+      this.dialogRef.close()
+      this.router.navigate(['/dashboard/liste-demande-versement'])
+      
     }
   async getDirections() {
     await this.service.getDirections().subscribe(
@@ -112,22 +117,13 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
    
       
     )
-    
+ 
+  //  
    }
    
-   opendialog(){
-    this.dialog.open(ListeDemandeVersementComponent, {
-      width:'60%',
-      height:'70%'
-     });
-  }
+    
       
-      onNoClickk(): void {
-        this.dialogRef.close();
-        this.opendialog()
-        this.Envoyer()
       
-      }
    
   }
 

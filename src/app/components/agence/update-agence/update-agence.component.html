@@ -16,7 +16,7 @@
 
 
 <mat-form-field  appearance="outline">
-<mat-label for="libelleAgence" >Libellé Direction: </mat-label> 
+<mat-label for="libelleAgence" >Libellé Agence: </mat-label> 
 <input formConroleName="libelleAgence" matInput placeholder=""pattern="" type="text" id="libelleAgence"  name="libelleAgence"   [(ngModel)]="data.agence.libelleAgence"   required #libelleAgence="ngModel"           
 [class.is-invalid]="libelleAgence.invalid && libelleAgence.touched"   >
 <small class="text-danger" [class.d-none]="libelleAgence.valid || libelleAgence.untouched">Libellé agence is required field</small> 
@@ -27,39 +27,18 @@
 
 <mat-form-field appearance="outline">
   <mat-label>Lieu d'archivage 1ere age </mat-label>
-  <mat-select formConroleName="lieu_d_archivage_1_ere_age" placeholder="" name="lieu1" [(ngModel)]="data.agence.lieu_d_archivage_1_ere_age" required #lieu_d_archivage_1_ere_age="ngModel"
+  <mat-select formConroleName="lieu_d_archivage_1_ere_age" placeholder="" name="lieu1" [(ngModel)]="selectedId1" required #lieu_d_archivage_1_ere_age="ngModel"
    [class.is-invalid]="lieu_d_archivage_1_ere_age.invalid && lieu_d_archivage_1_ere_age.touched">
-    <mat-option value="Bureau" >Bureau</mat-option>
-    <mat-option value="Salles d’archives – Amirouche, Berlioz - Bouhired">Salles d’archives – Amirouche, Berlioz - Bouhired</mat-option>
-    <mat-option value="Salle d’archives"  selected >Salle d’archives</mat-option>
-    <mat-option value="Bab El -Oued" >Bab El -Oued</mat-option>
+   <mat-option *ngFor="let lieu of lieux" [value]="lieu.id">{{lieu.lieu}}</mat-option >
   </mat-select>
   <small class="text-danger" [class.d-none]="lieu_d_archivage_1_ere_age.valid || 
 lieu_d_archivage_1_ere_age.untouched">veuiller choisir un lieu</small> 
 </mat-form-field>
 <mat-form-field appearance="outline">
   <mat-label>Lieu d'archivage 2eme age </mat-label>
-  <mat-select formConroleName="lieu_d_archivage_2_eme_age" placeholder="" name="lieu" [(ngModel)]="data.agence.lieu_d_archivage_2_eme_age" 
+  <mat-select formConroleName="lieu_d_archivage_2_eme_age" placeholder="" name="lieu" [(ngModel)]="selectedId2" 
   required #lieu_d_archivage_2_eme_age="ngModel" [class.is-invalid]="lieu_d_archivage_2_eme_age.invalid && lieu_d_archivage_2_eme_age.touched" >
-
-  <mat-option value= "Rouiba EL -kenz" selected>Rouiba EL -kenz</mat-option >
-  <mat-option  value="Centre de préarchivage de Rouiba El - Kenz" >Centre de préarchivage de Rouiba El - Kenz</mat-option >
-  <mat-option  value="Centre d’Archives de 
-  Khemis- Miliana"> Centre d’Archives de 
-  Khemis- Miliana</mat-option >
-  <mat-option  value="Bureau" >Bureau</mat-option >
-  <mat-option  value="Belcourt" >Belcourt</mat-option >
-  <mat-option  value="Maghnia">Maghnia</mat-option >
-  <mat-option  value="Salle d’Archives">Salle d’Archives</mat-option >
-  <mat-option  value="Hai –El –Djamel
-  SERSID" >Hai –El –Djamel
-    SERSID</mat-option >
-  <mat-option  value="Annaba-Zone Industrielle- Pont -Bouchet" >Annaba-Zone Industrielle- Pont -Bouchet</mat-option >
-  <mat-option  value="Centre d’Archives" >Centre d’Archives</mat-option >
-  <mat-option  value="Zone  Industrielle
-  Oued -Sly - Chlef" >Zone  Industrielle
-  Oued -Sly - Chlef</mat-option >
-  <mat-option value="Khemis - Miliana" >Khemis - Miliana</mat-option >
+  <mat-option *ngFor="let lieu of lieux" [value]="lieu.id">{{lieu.lieu}}</mat-option >
   </mat-select>
   <small class="text-danger" [class.d-none]="lieu_d_archivage_2_eme_age.valid || lieu_d_archivage_2_eme_age.untouched">veuiller choisir un lieu</small> 
 </mat-form-field>

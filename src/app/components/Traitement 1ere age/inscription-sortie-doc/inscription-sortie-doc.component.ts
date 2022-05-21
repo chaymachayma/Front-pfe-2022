@@ -15,10 +15,14 @@ import { ModifierSortieDocComponent } from './modifier-sortie-doc/modifier-sorti
   styleUrls: ['./inscription-sortie-doc.component.css']
 })
 export class InscriptionSortieDocComponent implements OnInit {
+  date_De_creation_Du_Document:any;
+  //LocalDate:String=new Date().toLocaleString();
   nomenclatures:any;
+  Datedeversemnent2emeage:any;
+  LocalDate:String=new Date().toLocaleString();
   nomen:any;
    searchValue!:string;
-   displayedColumns: string[] = ['id','chapitre_comptable','nombre_De_pages','date_De_creation_Du_Document','libelleDirection','designation_Nomenclature','action'];
+   displayedColumns: string[] = ['id','chapitre_comptable','nombre_De_documents','numero_d_ordre','numero_document','nombre_De_pages','date_De_creation_Du_Document','libelleDirection','designation_Nomenclature','Datedeversemnent2emeage','action'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,16 +40,11 @@ export class InscriptionSortieDocComponent implements OnInit {
   error=>console.log("exception occured")
 )
   }
-  updateDocument(id:number){
   
-    this._router.navigate(['modifierSortie1ere',id]);
-  }
   
  
 
-consulterDocument(id:number){
-  this._router.navigate(['ConsulterSortie1ere',id]);
- }
+
   
   openDialog() {
     this.dialog.open(CreeSortiedocComponent, {
@@ -59,7 +58,7 @@ consulterDocument(id:number){
     this.dialog.open(ConsulterSortieDocComponent, {
       width:'45%',
       data : {
-        sortie: item
+        sortie: [item]
       }
     });
   }
@@ -68,7 +67,7 @@ consulterDocument(id:number){
       this.dialog.open(ModifierSortieDocComponent, {
         width:'45%',
         data : {
-         sortie : item
+         sortie : [item]
         }
       });
 
@@ -80,5 +79,8 @@ consulterDocument(id:number){
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }
+    }
+    retour(){
+      window.location.reload()
     }
 }

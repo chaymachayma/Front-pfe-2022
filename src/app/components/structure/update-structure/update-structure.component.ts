@@ -17,25 +17,40 @@ export class UpdateStructureComponent implements OnInit {
   structure:Structure= new Structure();
   lieux!:LieuArchive[];
   selectedId1!:number;
+  selectedId2!:number;
   constructor(private _service:StructureService,private _router:Router,private route:ActivatedRoute
    , private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
   
 
-  this.getLieu();
-  this.selectedId1=this.data.structure.lieu_archivage1ereAge.id ;
-  console.log(this.selectedId1);
- console.log(this.data.structure);
+    this.getLieu();
+    this.selectedId1=this.data.structure.lieu_archivage1ereAge.id ;
+    this.selectedId2=this.data.structure.lieu_archivage2emeAge.id ;
+   console.log(this.data.structure);
 }
-  enregStructure(){  
-    this._service.updateStructure(this.data.structure.id,this.data.structure).subscribe(
-      data=>{
-          console.log(data)
-        },
-      error=>console.error());
-  }
+enregStructure(){  
+  console.log(this.data.structure,"avant")
+  this._service.getLieuById(this.selectedId1).subscribe(
+    res=> {
+      this.data.structure.lieu_archivage1ereAge=res;
+      this._service.getLieuById(this.selectedId2).subscribe(
+        res=>{
+          this.data.structure.lieu_archivage2emeAge=res;
+          
+          this._service.updateStructure(this.data.structure.id,this.data.structure).subscribe(
 
+            data=>{
+                console.log(data,"data received")
+              },
+            error=>console.error());
+        }
+        
+      )
+    }
+  )
+  }
+          
   getLieu(){
     this._service.getLieu().subscribe(
     res=>this.lieux=res
@@ -45,7 +60,7 @@ export class UpdateStructureComponent implements OnInit {
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',
-      text: "Vous ne pourrez pas récupérer ce fichier imaginaire?",
+  
       icon:'warning',
       showCancelButton:true,
       confirmButtonText:'oui,modifiez-le!',
@@ -59,14 +74,12 @@ export class UpdateStructureComponent implements OnInit {
       if (result.value) {
         Swal.fire(
           'modifié!',
-          'Votre fichier imaginaire a été modifié',
           'success'
         )
       window.location.reload()
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        'Votre fichier imaginaire est en sécurité 🙂',
         'error'
       )
       }

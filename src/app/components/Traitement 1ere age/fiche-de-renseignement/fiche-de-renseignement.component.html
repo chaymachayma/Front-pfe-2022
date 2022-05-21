@@ -1,27 +1,27 @@
-<div style="margin-top: 10px">
-    <h1 mat-dialog-title >Fiche de reseignement:</h1>
-  
-  <br><br>
-  <div mat-dialog-content style="font-size: 20px">
-    <mat-label ><b>Code: </b>    </mat-label>     {{data.suividocument.code}}
-        <br>
-        <br>
-          <mat-label> <b>Mois de renseignement:</b> </mat-label> {{data.suividocument.limite_de_conservation_1ere_age}}
-       
-        
-        <br>
+<div id="demo" style="margin-top: 10px">
+  <h1 mat-dialog-title >Fiche de reseignement:</h1>
+
+<br><br>
+<div mat-dialog-content style="font-size: 20px">
+  <mat-label ><b>Code direction: </b> </mat-label> {{suividocument.codedirection.codedirection}}
       <br>
-        <mat-label><b>Nature document:</b></mat-label> {{data.suividocument.NatureDocument}}
-   
-     
-    <br> 
+      <br>
+        <mat-label> <b>Date de création de la piéce:</b> </mat-label> {{suividocument.date_De_creation_Du_Document}}      
+      <br>
     <br>
-    <mat-label><b>Référence de la classe de classement:</b></mat-label> {{data.suividocument.reference}}
-   
-    <div mat-dialog-actions [align]="'end'">
-      <button  class="btn" mat-dialog-close  > Retour </button>
-    </div>
-    <br><br>
-  
+
+      <mat-label><b>Nature document:</b></mat-label> {{suividocument.designation_Nomenclature.designation_Nomenclature}}    
+  <br> 
+  <br>
+  <mat-label><b>Référence de la case de classement:</b></mat-label> {{suividocument.empl_physique}}
+ 
+  <br><br> 
+  <div mat-dialog-actions [align]="'end'">
+    <button  class="btn" (click)="retour()"  > Retour </button>
+    <button style="background-color:#cf2b4f; width:93px; height:35px;" printSectionId="demo" color="warn"  ngxPrint>Imprimer</button>
+
   </div>
+  <br><br>
+
+</div>
   

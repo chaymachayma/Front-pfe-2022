@@ -18,14 +18,9 @@ export class ConsulterSortieDocComponent implements OnInit {
     private router: Router,@Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
-    if(this.id=this.route.snapshot.params['id']){
-    this.suividocument=new SuiviDocument();
-    this.service.getDOcumentById(this.id).subscribe(
-      data=>{ console.log(data);
-               this.suividocument=data;
-      },
-      error=>console.log(error)
-      )
-  }
+    console.log(this.data,"hethi li hajetna biha")
+   this.suividocument=this.data.sortie[0]
+   console.log(this.suividocument)
+   
   }
 }

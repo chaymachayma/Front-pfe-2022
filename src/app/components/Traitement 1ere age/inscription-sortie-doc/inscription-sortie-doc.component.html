@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
     ">
     <br>
-    
+    <h1 mat-dialog-title >inscription de sortie d'un document</h1>
     <a class="btn btn-success"  role="button"  (click)="openDialog() ">+ Créer</a>
     
     <br>
@@ -30,7 +30,30 @@
                     </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.chapitre_comptable}}</td>
                   </ng-container>
-            
+                  <ng-container matColumnDef="numero_document">
+ 
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="numero_document">
+                      Numero Document 
+                    </th>
+                    <td mat-cell *matCellDef="let suividocument">{{suividocument.numero_document}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="codedocument">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="codedocument" >
+                      code document 
+                    </th>
+                    <td mat-cell *matCellDef="let suividocument">{{suividocument.codedocument}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="numero_d_ordre">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="numero_d_ordre" >numero d'ordre
+                     </th>
+                    <td mat-cell *matCellDef="let suividocument">{{suividocument.numero_d_ordre}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="nombre_De_documents">
+                    <th mat-header-cell *matHeaderCellDef  mat-sort-header="nombre_De_documents">
+                      Nombre de Documents
+                    </th>
+                    <td mat-cell *matCellDef="let suividocument"> {{suividocument. nombre_De_documents}} </td>
+                  </ng-container>
                  <ng-container matColumnDef="nombre_De_pages">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="nombre_De_pages">
                      Nombre de pages
@@ -41,7 +64,7 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="date_De_creation_Du_Document" >
                       Date de creation du document
                     </th>
-                    <td mat-cell *matCellDef="let suividocument">{{suividocument.date_De_creation_Du_Document}}</td>
+                    <td mat-cell *matCellDef="let suividocument">{{ LocalDate}}</td>
                   </ng-container>
               
 
@@ -49,17 +72,22 @@
                     <th mat-header-cell *matHeaderCellDef  mat-sort-header="libelleDirection">
                     Libelle Direction
                     </th>
-                    <td mat-cell *matCellDef="let suividocument"> {{suividocument.libelleDirection}} </td>
+                    <td mat-cell *matCellDef="let suividocument"> {{suividocument.libelleDirection.libelleDirection}} </td>
                   </ng-container>
 
                   <ng-container matColumnDef="designation_Nomenclature">
                     <th mat-header-cell *matHeaderCellDef  mat-sort-header="designation_Nomenclature">
                     Designation Nomenclature
                     </th>
-                    <td mat-cell *matCellDef="let suividocument"> {{suividocument.designation_Nomenclature}} </td>
+                    <td mat-cell *matCellDef="let suividocument"> {{suividocument.designation_Nomenclature.designation_Nomenclature}} </td>
                   </ng-container>
 
-
+                  <ng-container matColumnDef="Datedeversemnent2emeage">
+                    <th mat-header-cell *matHeaderCellDef  mat-sort-header="Datedeversemnent2emeage">
+                        Date de sortie
+                    </th>
+                    <td mat-cell *matCellDef="let suividocument">{{LocalDate}}</td>
+                  </ng-container>
 
 
                   <ng-container matColumnDef="action">
@@ -86,7 +114,11 @@
                   
                     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
                   </div>
-                 
+                  <br>
+                  <div mat-dialog-actions [align]="'end'">
+                    <button  class="btnn" (click)="retour()"  > Retour </button>
+                  </div>
+                  <br><br>
         </div>
     
       </div>

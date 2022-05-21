@@ -6,6 +6,8 @@ import { Agence } from 'src/app/models/agence';
 import { AgenceService } from 'src/app/service/agence.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
+import { LieuArchive } from 'src/app/models/lieu-archive';
+import { DirectionService } from 'src/app/service/direction.service';
 
 @Component({
   selector: 'app-update-agence',
@@ -16,29 +18,47 @@ export class UpdateAgenceComponent implements OnInit {
 
   id:any;
    agence :any;
-  
-  constructor(  private service:AgenceService,private router:Router,private route:ActivatedRoute, 
+   lieux!:LieuArchive[];
+   selectedId1!:number
+   selectedId2!:number
+  constructor(  private _service:DirectionService,   private service:AgenceService,private router:Router,private route:ActivatedRoute, 
     private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void {
    
-    this.agence=new Agence();
-   if( this.id=this.route.snapshot.params['id']){
-    this.service.getAgenceById(this.id).subscribe(
-      data=>{console.log(data)
-      this.agence=data;
-            },
-      error=>console.log(error));
-      
+    this.getLieu();
+    this.selectedId1=this.data.agence.lieu_d_archivage_1_ere_age.id ;
+    this.selectedId2=this.data.agence.lieu_d_archivage_2_eme_age.id ;
+   console.log(this.data.agence);
+}
+onModif(){  
+  console.log(this.data.agence,"avant")
+  this.service.getLieuById(this.selectedId1).subscribe(
+    res=> {
+      this.data.agence.lieu_d_archivage_1_ere_age=res;
+      this._service.getLieuById(this.selectedId2).subscribe(
+        res=>{
+          this.data.agence.lieu_d_archivage_2_eme_age=res;
+          
+          this.service.updateAgence(this.data.agence.id,this.data.agence).subscribe(
 
-  }}
-  
-   onModif(){
-     this.service.updateAgence(this.data.id,this.data.agence).subscribe(
-    data=>console.log(data),error=>console.error());
-    this.agence=new Agence();
-   // this.router.navigate(['/updatedirection']);
+            data=>{
+                console.log(data,"data received")
+              },
+            error=>console.error());
+        }
+        
+      )
+    }
+  )
   }
+  getLieu(){
+    this._service.getLieu().subscribe(
+    res=>this.lieux=res
+    )
+    }
+  
+  
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',

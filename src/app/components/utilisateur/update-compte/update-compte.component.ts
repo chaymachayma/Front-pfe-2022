@@ -8,6 +8,8 @@ import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RegistrationService } from 'src/app/service/registration.service';
 import { Compte } from 'src/app/models/compte';
+import { DirectionService } from 'src/app/service/direction.service';
+import { Direction } from 'src/app/models/direction';
 
 
 @Component({
@@ -17,24 +19,36 @@ import { Compte } from 'src/app/models/compte';
 })
 export class UpdateCompteComponent implements OnInit {
    id :any;
-   compte : any;
+   lieux!:Direction[];
+   selectedId1!:number;
+   compte:Compte=new Compte();
   constructor(private _service:RegistrationService,private _router:Router,private route:ActivatedRoute
-   , private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
+   , private location: Location , @Inject(MAT_DIALOG_DATA) public data : any,private service:DirectionService) { }
 
   ngOnInit(): void {
-    this.compte=new Compte();
-  if(  this.id=this.route.snapshot.params['id']){
-    this._service.getCompteById(this.id).subscribe(
-      data=>{console.log(data)
-      this.compte=data;},
-      error=>console.log(error));
-  }}
-  enregCompte(){
-    
-    this._service.updateCompte(this.data.id,this.data.compte).subscribe(
-      data=>console.log(data),error=>console.error());
-      this.compte=new Compte();
-  }
+  this.getDirections()
+  this.selectedId1=this.data.compte.libelleDirection.id ;
+}
+
+      enregCompte(){      
+        console.log(this.selectedId1,"fff")
+            this.service.getDirectionById(this.selectedId1).subscribe(
+              
+              res=>{
+                this.data.compte.libelleDirection=res;
+                console.log(res,"res")
+                console.log(this.data)
+                this._service.updateCompte(this.data.compte.id,this.data.compte).subscribe(
+               
+                  data=>{
+                      console.log(data,"data received")
+                    },
+                  error=>console.error());
+              }
+              
+            )
+
+          }
 
  
   opensweetalert(){
@@ -54,7 +68,7 @@ export class UpdateCompteComponent implements OnInit {
       if (result.value) {
         Swal.fire(
           'modifié!',
-          'Votre fichier imaginaire a été modifié',
+          'Compte utilisateur mofidié',
           'success'
         )
       window.location.reload()
@@ -69,6 +83,21 @@ export class UpdateCompteComponent implements OnInit {
  
 
   }
+ /* getDirections(){
+    this.service.getDirections().subscribe(
+    res=>this.lieux=res
+    )
+    }*/
+
+    
+async getDirections() {
+  await this.service.getDirections().subscribe(
+     res=>{
+       this.lieux=res
+     },
+     error=>console.log(error)
+   )
+ }
   retour(){
     window.location.reload()
   }

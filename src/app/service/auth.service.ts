@@ -18,52 +18,35 @@ const httpOptions={
 })
 export class AuthService {
 
- //private currentUserSubject:BehaviorSubject<any>;
- //public currentUser:Observable<any>;
 
-  private signupUrl = 'http://localhost:8083/api/auth/';
+
+  private signupUrl = 'http://localhost:8083/api/auth/signup';
   private signinUrl = 'http://localhost:8083/api/auth/';
   constructor(private http:HttpClient,private jwtHelper:JwtHelperService,
     private tokenstorage:TokenService,private router:Router){
-     // this.currentUserSubject=new BehaviorSubject<any>(sessionStorage.getItem(TOKEN_KEY));
-      //this.currentUser=this.currentUserSubject.asObservable();
+   }
 
+   IsLoggedIn(){
+     const token=localStorage.getItem('token');
+     if(token){
+       return true;
+     }
+     else{
+       return false;
+     }
     }
-  //  public get  currentUseValue():any{
-    //  return this.currentUserSubject.value;
-
-    
     register(signupinfo:SignUpInfo): Observable<any> {
-      return this.http.post(this.signupUrl + 'signup', {
-        username: signupinfo.username,
-        email: signupinfo.email,
-        password: signupinfo.password
-      }, httpOptions);
+      return this.http.post(this.signupUrl,signupinfo)
+        
     }
- // signup(signupinfo:SignUpInfo){
-   // return this.http.post<JwtResponse>(this.signupUrl,signupinfo,httpOptions).pipe(map(data=>{
-     // this.saveUserData(data);
-      //return data;
-    //}));
-  //}
+ 
   login(login:LoginInfo): Observable<any> {
     return this.http.post(this.signinUrl + 'signin', {
       username: login.username,
       password: login.password
     }, httpOptions);
   }
- // login(login:LoginInfo){
-   // return this.http.post<JwtResponse>(this.signinUrl,login,httpOptions).pipe(map(data=>{
-     // this.saveUserData(data);
-      //return data;}));
-
-  //}
  
-/*private saveUserData(data: JwtResponse){
-  this.tokenstorage.saveToken(data.accesToken);  
-  this.tokenstorage.saveUsername(data.username);
-  this.tokenstorage.saveAuthorities(data.authorities);
-  this.currentUserSubject.next(data.accesToken);   */   
 
 
 

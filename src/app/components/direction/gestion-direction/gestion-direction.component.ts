@@ -28,7 +28,7 @@ export class GestionDirectionComponent implements OnInit {
   directions:any;
   dir:any;
  
-  displayedColumns: string[] = ['id', 'libelleDirection', 'codedirection', 'typeDirection','lieu_d_archivage_1_ere_age','lieu_d_archivage_2_eme_age','action'];
+  displayedColumns: string[] = ['libelleDirection', 'codedirection', 'typeDirection','lieu_d_archivage_1_ere_age','lieu_d_archivage_2_eme_age','action'];
  dataSource!: MatTableDataSource<any>;
  @ViewChild(MatPaginator) paginator!: MatPaginator;
  @ViewChild(MatSort) sort!: MatSort;

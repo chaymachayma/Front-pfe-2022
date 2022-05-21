@@ -48,11 +48,11 @@
 
 <mat-form-field  appearance="outline">
   <mat-label  for="libelleDirection" > libelle Direction</mat-label>
-  <mat-select placeholder="" name="libelle" [(ngModel)]="compte.libelleDirection" required #libelleDirection="ngModel"
+  <mat-select placeholder="" name="libelle" [(ngModel)]="selectedId1" required #libelleDirection="ngModel"
   [class.is-invalid]="libelleDirection.invalid && libelleDirection.touched">
 <mat-option *ngFor="let lieu of lieux" value="{{lieu.id}}">{{lieu.libelleDirection}}</mat-option >
 </mat-select>
-  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">Expediteur 1ere age is required fied</small> 
+  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">libelle Direction is required fied</small> 
   </mat-form-field>
 
 

@@ -16,8 +16,9 @@
         {{errorMessage('password')}}
       </mat-error>
     </mat-form-field>
+    <p *ngIf="show">{{msg}}</p>
     <button (click)="signin()" class="full-width border-radius-10" mat-flat-button color="primary">Se connecter</button>
-    <small>Vous n'avez pas de compte ? <a routerLink="/signup" color="primary">créer un compte</a> </small>
+    <br>
   </form>
   </ng-container>
   <ng-template #loading>

@@ -19,4 +19,9 @@ export class SuiviDoc2emeAgeServiceService {
  public createDocument(suividocument2emeage:SuiviDoc2emeAge) :Observable<any>{
    return this.http.post<any>("http://localhost:8083/api/test/SuiviDocument2eme",suividocument2emeage);
  }
+
+ update(id:number, suividocument2emeage:SuiviDoc2emeAge):Observable<any>{
+  return this.http.put<any>("http://localhost:8083/api/test/SuiviDocument2eme/" + suividocument2emeage.id,suividocument2emeage);
+}
+
 }

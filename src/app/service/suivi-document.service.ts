@@ -15,8 +15,8 @@ export class SuiviDocumentService {
  public  getDocuments() 
  {
    return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments");
- }
-getDOcumentById(id:number):Observable<any>{
+}
+getDOcumentById(id:any):Observable<any>{
   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments/" + id);
 }
 public createDocument(suividocument:SuiviDocument) :Observable<any>{

@@ -17,7 +17,7 @@ export class UpdateNomenclatureComponent implements OnInit {
   id :any;
   nomenclature : any;
  constructor(private _service:NomenclatureService,private _router:Router,private route:ActivatedRoute
-  , private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
+  ,private location: Location , @Inject(MAT_DIALOG_DATA) public data : any) { }
 
  ngOnInit(): void {
    this.nomenclature =new Nomenclature();
@@ -30,7 +30,8 @@ export class UpdateNomenclatureComponent implements OnInit {
  onModif(){
    
    this._service.updateNomenclature(this.data.id,this.data.nomenclature ).subscribe(
-     data=>console.log(data),error=>console.error());
+     data=>console.log(data),
+     error=>console.error());
      this.nomenclature =new Nomenclature();
  }
 
@@ -38,7 +39,7 @@ export class UpdateNomenclatureComponent implements OnInit {
  opensweetalert(){
   Swal.fire({
     title:'Êtes-vous sûre?',
-    text: "Vous ne pourrez pas récupérer ce fichier imaginaire?",
+    
     icon:'warning',
     showCancelButton:true,
     confirmButtonText:'oui,modifiez-le!',
@@ -52,14 +53,14 @@ export class UpdateNomenclatureComponent implements OnInit {
     if (result.value) {
       Swal.fire(
         'modifié!',
-        'Votre fichier imaginaire a été modifié',
+        
         'success'
       )
     window.location.reload()
     }else if (result.dismiss==Swal.DismissReason.cancel){
     Swal.fire(
       'Annulé',
-      'Votre fichier imaginaire est en sécurité :)',
+       
       'error'
     )
 

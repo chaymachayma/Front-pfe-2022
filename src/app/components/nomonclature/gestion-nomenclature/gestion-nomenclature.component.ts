@@ -36,15 +36,15 @@ export class GestionNomenclatureComponent implements OnInit {
   ngOnInit(): void {
    
 
- this.service.getNomenclatures().subscribe(
-    data=>{ console.log("response recieved");
-    this.dataSource=new MatTableDataSource(data) ;
-               this.dataSource.paginator=this.paginator;
-               this.dataSource.sort=this.sort
-             
-    },
-    error=>console.log("exception occured")
-  )
+    this.service.getNomenclatures().subscribe(
+      data=>{ console.log("response recieved");
+      this.dataSource=new MatTableDataSource(data) ;
+                 this.dataSource.paginator=this.paginator;
+                 this.dataSource.sort=this.sort
+               
+      },
+      error=>console.log("exception occured")
+    )
     }
   
 

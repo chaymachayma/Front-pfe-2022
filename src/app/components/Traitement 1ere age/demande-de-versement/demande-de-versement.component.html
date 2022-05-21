@@ -6,7 +6,7 @@
 
 
 <mat-form-field  appearance="outline">
-<mat-label  for="Numerodemande" >Numero Demande: </mat-label>
+<mat-label  for="Numerodemande" >Numero Demande</mat-label>
 <input  matInput placeholder="" type="number" id="num_dde" 
  name="num" [(ngModel)]="demande.num_dde"  required #num_dde="ngModel"           
 [class.is-invalid]=" num_dde.invalid && num_dde.touched"   >
@@ -67,7 +67,7 @@
                     <div mat-dialog-actions [align]="'end'">
                         
                         
-                        <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" type="Submit" (click)="onNoClickk()">Envoyer</button>
+                        <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" type="Submit" (click)="Envoyer()">Envoyer</button>
 
 
             

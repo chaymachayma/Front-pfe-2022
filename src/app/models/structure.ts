@@ -9,11 +9,19 @@ export class Structure {
         lieu_archivage2emeAge!:LieuArchive;
         constructor(){}     
 }
-
 export class planEnlevement{
         code!:number;
         date_!:Date;
         materiel!:String;
         humain!:String;
+        constructor(){};
+      }
+      export class invitationComission{
+        nom!:String;
+        prenom!:String;
+        structure!:String;
+        dateTenueCommission!:Date;
+        ordreJour !:number;
+        signature!:String;
         constructor(){};
       }

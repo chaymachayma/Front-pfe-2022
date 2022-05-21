@@ -7,6 +7,7 @@
 .sidenav {
   width: 330px;
   background: #34469e;
+ 
 }
 
 .mat-list-item{
@@ -19,22 +20,46 @@
   
 }
 
-.mat-toolbar {
+
+
+.tool{
+  background:#082096;
+  justify-content: space-between;
+  height: 71px;
+  top: 0;
+  z-index: 1;
+  position: sticky;
+}
+mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #34469e;
-  height: 63px;
+  background: white;
+  height: 71px;
 }
 .mat-list-item{
   height: 50px;
   width:15px;
   
 }
+.hello a{
+  transition-property: background;
+}
+
+.hello :hover{
+  background: rgb(120, 202, 184);
+}
+
+.span {
+  padding-right: 1rem;
+  margin-top:15px;
+  
+}
 .centre{
-margin-left: 570px;
+margin-left: 20px;
+margin-right: 510px;
 font-size: 25px;
-color: white;
+color: #082096;
 }
 
 img{
@@ -44,15 +69,24 @@ img{
 
 mat-icon{
   margin-right: 9px; 
+  margin-left: 10px;
   color: white;
   font-size: 29px;
 }
+
 
 span{
   margin-top:15px
 }
 
-
+.btn{
+background-color:rgb(120, 202, 184) ;
+width:260px;
+height: 50px;
+margin-right:20px;
+margin-left: 30px;
+display: flex;
+}
 /*
 mat-toolbar {
   background: #004a9f;

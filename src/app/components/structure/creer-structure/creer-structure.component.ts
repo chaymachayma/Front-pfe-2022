@@ -81,7 +81,7 @@ export class CreerStructureComponent implements OnInit {
     console.log(this.structure.code);    
        Swal.fire(
           'crée!',
-          'Votre Compte a été crée :)',
+          'Votre Structure a été crée ',
           'success'
          ).then( result => {
           console.log(result);

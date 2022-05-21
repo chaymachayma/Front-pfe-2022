@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 //const USERNAME_KEY = 'AuthUsername';
 //const AUTHORITIES_KEY='AuthAuthorities';
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const role = 'auth-user';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,54 +14,31 @@ export class TokenService {
 
  
 
-  public saveToken(token: string) {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+  public saveToken(token: string,roles:any) {
+   localStorage.removeItem(TOKEN_KEY);
+   localStorage.setItem(TOKEN_KEY, token);
+   localStorage.removeItem(role)
+   localStorage.setItem(role,roles)
   }
 
   public getToken(): string|null {
-    return sessionStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY);
   }
 
-  public saveUser(user: any) {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
-  }
+  public isAdmin(){
+    const token=localStorage.getItem("role")
+    if (token){
+  
+      if (token!="ROLE_ADMIN")
+            return false;
+      else
+      return true;
 
-  public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY)||'{}');
+    }
+    return false;
   }
 }
 
 
 
- /* public saveToken(token: string) {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
-  }
-
-  public getToken(): string |null{
-    return sessionStorage.getItem(TOKEN_KEY);
-  }
-  public saveUsername(username: string) {
-    window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, username);
-  }
-  public getUsername(): string |null{
-    return sessionStorage.getItem(USERNAME_KEY);
-  }
-  public saveAuthorities(authorities: string[]|null) {
-    window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY,JSON.stringify( authorities));
-
-  }
-  public getAuthorities(): string[]{
-    this.roles=[];
-    if(sessionStorage.getItem(TOKEN_KEY)){
-    JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)|| '{}').forEach((authority: { authority: string; }) => {
-      this.roles.push(authority.authority);
-    });}
-      return this.roles;
-  }*/
-
-
+  

@@ -1,50 +1,50 @@
 h1 {
-    color: #267ace;
-    font-size: 30px;
-    margin-top: 5px;
-    margin-left: 5px;
-  }
-
-.btn-success{
-  margin-left: 14px ;
-  width: 80px;
-  height: 39px;
-}
-
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-.container{
-  max-width:1200px;
-  margin: 0 auto;
-}
-
-h1 {
   color: #267ace;
   font-size: 30px;
   margin-top: 5px;
   margin-left: 5px;
 }
 
-.custab{
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin: 10% 0;
-  box-shadow: 3px 3px 2px #ccc;
-  transition: 0.5s;
-  }
-.custab:hover{
-  box-shadow: 3px 3px 0px transparent;
-  transition: 0.5s;
-  }
+.btn-success{
+margin-left: 14px ;
+width: 80px;
+height: 39px;
+}
 
- 
+
+table {
+width: 100%;
+}
+
+.mat-form-field {
+font-size: 14px;
+width: 100%;
+}
+.container{
+max-width:1200px;
+margin: 0 auto;
+}
+
+h1 {
+color: #267ace;
+font-size: 30px;
+margin-top: 5px;
+margin-left: 5px;
+}
+
+.custab{
+border: 1px solid #ccc;
+padding: 5px;
+margin: 10% 0;
+box-shadow: 3px 3px 2px #ccc;
+transition: 0.5s;
+}
+.custab:hover{
+box-shadow: 3px 3px 0px transparent;
+transition: 0.5s;
+}
+
+
 
 #custom-search-input {
 margin:0;

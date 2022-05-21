@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Invitation des membres de la commission</h1>
+<br>
+<div mat-dialog-content>
+<form #enregForm="ngForm" >
+
+    
+    <mat-form-field  appearance="outline">
+        <mat-label  for="nomm" >Nom: </mat-label>
+        <input matInput placeholder="" type="text" id="nomm" 
+         name="nomm" [(ngModel)]="invitationComission.nom"  required #nom="ngModel"           
+        [class.is-invalid]="nom.invalid && nom.touched"   >
+        <small class="text-danger" [class.d-none]="nom.valid ||nom.untouched">Nom is required field</small> 
+        </mat-form-field>
+
+        
+    <mat-form-field  appearance="outline">
+        <mat-label  for="prenom" >Prénom: </mat-label>
+        <input matInput placeholder="" type="text" id="prenom" 
+         name="prenomm" [(ngModel)]="invitationComission.prenom"  required #prenom="ngModel"           
+        [class.is-invalid]="prenom.invalid && prenom.touched"   >
+        <small class="text-danger" [class.d-none]="prenom.valid ||prenom.untouched">Prénom is required field</small> 
+        </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+        <mat-label  for="structure" >Structure:</mat-label>
+        <input  matInput placeholder="" type="text" id="structure" 
+         name="structure" [(ngModel)]="invitationComission.structure"  required #structure="ngModel"         
+        [class.is-invalid]="structure.invalid && structure.touched"   >
+        <small class="text-danger" [class.d-none]=" structure.valid ||  structure.untouched">Structure is required field</small> 
+        </mat-form-field>
+     
+<mat-form-field  appearance="outline">
+    <mat-label  for="dateTenueCommission" >Date de tenue de la commission: </mat-label>
+    <input  matInput placeholder="" type="date" id=" date_" 
+     name="dateTenueCommission" [(ngModel)]="invitationComission.dateTenueCommission"  required #dateTenueCommission="ngModel"           
+    [class.is-invalid]="dateTenueCommission.invalid && dateTenueCommission.touched"   >
+    <small class="text-danger" [class.d-none]="dateTenueCommission.valid || dateTenueCommission.untouched">Date de tenue de la commission is required field</small> 
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+        <mat-label  for="ordreJour" >Ordre du jour: </mat-label>
+        <input matInput placeholder="" type="number" id="ordreJour" 
+         name="ordreJourr" [(ngModel)]="invitationComission.ordreJour"  required #ordreJour="ngModel"           
+        [class.is-invalid]="ordreJour.invalid && ordreJour.touched"   >
+        <small class="text-danger" [class.d-none]="ordreJour.valid ||ordreJour.untouched">Ordre du jour is required field</small> 
+        </mat-form-field>
+
+ 
+                                
+                    <div mat-dialog-actions [align]="'end'">                     
+                        <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" type="Submit" (click)="Envoyer()">Envoyer</button>
+            
+</div>
+<br><br>
+        

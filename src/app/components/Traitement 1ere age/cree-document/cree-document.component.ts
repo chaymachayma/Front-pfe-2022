@@ -14,8 +14,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./cree-document.component.css']
 })
 export class CreeDocumentComponent implements OnInit {
+
  suividocument=new SuiviDocument();
  libelleDirections!:any[];
+
  designation_Nomenclatures!:any[];
   msg='';
   productForm !: FormGroup; 
@@ -33,7 +35,12 @@ console.log(this.suividocument)
 
 this.service.getDirectionById(this.suividocument.libelleDirection).subscribe(
   res=>{this.suividocument.libelleDirection=res
+    
   console.log(this.suividocument)
+  this.service.getDirectionById(this.suividocument.codedirection).subscribe(
+    res=>{this.suividocument.codedirection=res
+      
+    console.log(this.suividocument)
   //
 this.serviice.getNomenclatureById(this.suividocument.designation_Nomenclature).subscribe(
   res=>{this.suividocument.designation_Nomenclature=res
@@ -41,7 +48,7 @@ this.serviice.getNomenclatureById(this.suividocument.designation_Nomenclature).s
     console.log(this.suividocument)
 //
 
-
+this.suividocument.limite_de_conservation_1ere_age=this.suividocument.limite_de_conservation_1ere_age+" ans";
   this._service.createDocument(this.suividocument).subscribe(
     data=>{ 
       console.log("response received");
@@ -58,7 +65,11 @@ error=>{console.log(error);}
 )},
   error=>{console.log(error)}
 )
+},
+error=>{console.log(error)}
+)
 }
+
   
   opensweetalert(){
            
@@ -94,6 +105,7 @@ window.location.reload()
       console.log(res,'hh')
       this.libelleDirections=res,
       console.log(this.libelleDirections,'jj')
+       
     },
 
     error=>console.log(error)

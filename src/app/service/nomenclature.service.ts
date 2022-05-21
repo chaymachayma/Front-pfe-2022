@@ -12,7 +12,7 @@ export class NomenclatureService {
   constructor(private http: HttpClient) {
   }            
  
-  isAuth:boolean =false;
+ 
  public  getNomenclatures() 
  {return this.http.get<any>("http://localhost:8083/api/test/Nomenclatures");
 }

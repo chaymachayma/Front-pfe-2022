@@ -11,8 +11,10 @@ export class SuiviDocument {
     nombre_De_documents !:number;
     codedocument!:number;
     numero_d_ordre!:number;
-    emplacement_physique!:number;
+    empl_physique!:number;
     limite_de_conservation_1ere_age!:string;
     libelleDirection!:Direction;
     designation_Nomenclature!:Nomenclature;
+    codedirection!:Direction;
+    //date_de_versement_2eme_age!:Date
 }
