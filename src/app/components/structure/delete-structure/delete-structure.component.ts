@@ -30,10 +30,10 @@ export class DeleteStructureComponent implements OnInit {
   }}
 
   deleteStructure(id:number){
-    console.log(id);    
+   
     this._service.deleteStructure(id).subscribe(
       data=>{
-        console.log(data);
+       
         this.structures=this._service.getStructures();
       },
       error=>console.error(error)

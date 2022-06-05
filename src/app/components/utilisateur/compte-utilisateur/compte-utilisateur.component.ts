@@ -15,7 +15,7 @@ import { DirectionService } from 'src/app/service/direction.service';
 })
 export class CompteUtilisateurComponent implements OnInit {
   compte=new Compte();
-  //em:string="";
+ 
   msg='';
   productForm !: FormGroup;
   lieux!:Compte[];
@@ -30,7 +30,7 @@ export class CompteUtilisateurComponent implements OnInit {
     this.service.getDirectionById(this.selectedId1).subscribe(
       res=>{
       this.compte.libelleDirection=res
-      console.log(this.compte)  
+ 
       this._service.registrerCompteFromRemote(this.compte).subscribe(     
         data =>{
           Swal.fire(
@@ -39,10 +39,10 @@ export class CompteUtilisateurComponent implements OnInit {
             'success').then( result => {
               console.log(result);
               if(result.isConfirmed ){
-             //  this.compte.matricule = "";
+         
                 this.compte.nom = "";
                 this.compte.prenom = "";       
-               // this.compte.direction = ""; 
+             
                 this.compte.email=""; 
                 this.compte.password =""; 
               }
@@ -64,8 +64,7 @@ export class CompteUtilisateurComponent implements OnInit {
   retourner(){
     this._router.navigate(['/gestion-parametrages']);
   }
- // email:any;
-  //exist:boolean=false;
+ 
  
   opensweetalert(){ 
      this.enregCompte();      

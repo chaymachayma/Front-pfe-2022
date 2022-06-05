@@ -28,17 +28,17 @@ export class AjouterEmplacementComponent implements OnInit {
   public dialogRef: MatDialogRef<ClassementDocsComponent>) { }
 //
   ngOnInit(): void {
-    console.log(this.data,"amal")
+ 
     this.suividocument=this.data[0]
     this.getDirections()
-    console.log(this.libelleDirections)
+ 
     this.getNomenclatures()
     this.getCentrePreArchivage() 
     this._service.getDocuments().subscribe(
       data=>{
-        console.log(data,"hethi 2eme age")
+      
         this.data=data
-        console.log(this.suividocument,"suividocument")
+       
       }
     )
     this.select1=this.suividocument.code_centre.id;
@@ -51,23 +51,22 @@ export class AjouterEmplacementComponent implements OnInit {
   public enregistre(){  
     this.service.getDirectionById(this.suividocument.libelleDirection).subscribe(
       res=>{this.suividocument.libelleDirection=res
-      console.log(this.suividocument)
+   
 
       this.serviice.getNomenclatureById(this.suividocument.designation_Nomenclature).subscribe(
         res=>{this.suividocument.designation_Nomenclature=res     
-          console.log(this.suividocument)
+       
          
       this.servicee.getCentrePreArchivageById(this.suividocument.code_centre).subscribe(
         res=>{this.suividocument.code_centre=res     
-          console.log(this.suividocument);
-
-  //console.log(this.suividocument,"lllll")
+      
+ 
   this._service.createDocument(this.suividocument).subscribe(        
     data =>{
     console.log("reponse received");  
    },
    error =>{
-    console.log(this.suividocument,"ahmed")
+    
      console.log("exception occured");
     }
     )
@@ -82,17 +81,13 @@ export class AjouterEmplacementComponent implements OnInit {
     opensweetalert(){
            
       Swal.fire(
-        'ajoutée!',
-        'Votre Document a été ajoutée',
+        'Ajouté!',
+        'Votre document a été ajouté',
         'success'
       ).then( result => {
         console.log(result);
         if(result.isConfirmed ){         
-        // this.suividocument.date_De_creation_Du_Document=;
-          //this.suividocument.chapitre_comptable="";       
-        // this.suividocument.nombre_De_pages = 
-          //this.suividocument.nombre_De_documents=;
-          //this.suividocument.limite_de_conservation_1ere_age = "";
+    
           this.dialogRef.close();
         }
       })
@@ -104,9 +99,8 @@ export class AjouterEmplacementComponent implements OnInit {
 async getDirections() {
  await this.service.getDirections().subscribe(
     res=>{
-      console.log(res,'hh')
-      this.libelleDirections=res,
-      console.log(this.libelleDirections,'jj')
+ 
+      this.libelleDirections=res
     },
     error=>console.log(error)
   )
@@ -116,9 +110,8 @@ async getDirections() {
 async getCentrePreArchivage()  {
   await this.servicee.getCentrePreArchivage().subscribe(
      res=>{
-       console.log(res,'hh')
-       this.code_centres=res,
-       console.log(this.code_centres,10)
+    
+       this.code_centres=res
      },
      error=>console.log(error)
    )
@@ -127,8 +120,7 @@ async getCentrePreArchivage()  {
 async getNomenclatures() {
  await this.serviice.getNomenclatures().subscribe(
    res=>{ 
-     this.designation_Nomenclatures=res,
-     console.log(this.designation_Nomenclatures,'jj')
+     this.designation_Nomenclatures=res
    },
     error=>console.log(error)
 

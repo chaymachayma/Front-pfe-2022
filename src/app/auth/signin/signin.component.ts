@@ -27,16 +27,16 @@ show=false;
   }
   public errorMessage(formControlName: string, email?: boolean): string | void {
     if (this.signinForm.controls[formControlName]?.errors?.['required']){
-      return 'Champ obligatoire'
+      return 'Champs obligatoire'
     }
   }
   
   public signin(): void {
-    console.log(this.signinForm.value)
+    
     this.service.login(this.signinForm.value).subscribe(
       ok=>{localStorage.setItem("token",ok)
       localStorage.setItem("role",ok.roles[0])
-      console.log(ok,"ok")
+    
         this._service.saveToken(ok,ok.roles)
 
         if(this._service.isAdmin()){

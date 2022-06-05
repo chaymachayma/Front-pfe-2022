@@ -17,12 +17,10 @@ import { UpdateStructureComponent } from '../update-structure/update-structure.c
 })
 export class GestionStructureComponent implements OnInit {
 
-  //compt:any;
- //comptes:any;
-  //prenom!:string;
+ 
   searchValue!:string;
  
-  displayedColumns: string[] = ['id','code','libelle','lieu_archivage1ereAge','lieu_archivage2emeAge','action'];
+  displayedColumns: string[] = ['code','libelle','lieu_archivage1ereAge','lieu_archivage2emeAge','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -41,15 +39,7 @@ export class GestionStructureComponent implements OnInit {
    )
    }
   
-  updateStructure(id:number){
-    this._router.navigate(['update-structure',id]);
-  }
- consulterStructure(id:number){
-   this._router.navigate(['consulter-structure',id]);
-  }
-  deleteStructure(id:number){
-   this._router.navigate(['delete-structure',id]);
-  }
+  
  
  openDialog() {
    this.dialog.open(CreerStructureComponent, {

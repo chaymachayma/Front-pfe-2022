@@ -34,39 +34,36 @@ export class FicheDeRenseignement2emeAgeComponent implements OnInit {
     console.log(this.suividocument,"suiviiiiii");
     }*/
     
-console.log(this.data,"data")
+
 this.suividocument=this.data[0]
-console.log(this.suividocument,"suibiii")
+
 
   }
 retour(){
  
 let d=new Date(this.data[0].date_de_versement_2eme_age)
-console.log(d,"avant") 
+ 
 let y= d.getFullYear()
 let g=this.data[0].limite_de_conservation_2eme_age
-console.log(g,"gg")
+
 let x=this.data[0].limite_de_conservation_2eme_age.substr(0,g.indexOf(" "))
-console.log(x,"xxxxxxxx")
+
 let q=parseInt(x)
-console.log(q,"qqqq")
+
 let r=y+q
 let date_alert=r.toString()
-console.log(date_alert,"dddddd")
+
 d.setFullYear(r)
 
-console.log(d,"apres")  
+ 
 let date_dejour= new Date()
-console.log(date_dejour,"datedejour")
 
-console.log(date_dejour);
-console.log(date_dejour>d,"comparison")
 if(date_dejour>d){
  
 Swal.fire({
 
 icon: 'success',
-title: 'le document  a fini son 1ere age',
+title: 'le document  a fini son 2ème age',
 showConfirmButton: false,
 timer: 3000
 
@@ -78,12 +75,12 @@ else {
 Swal.fire({
 
 icon: 'info',
-title: 'le document n`a pas fini encore son 1 ere age',
+title: 'le document n`a pas fini encore son 2ème age',
 showConfirmButton: false,
 timer: 3000
 })
 }
-this.router.navigate(['/dashboard/InscriptionDocRecus'])
+this.router.navigate(['dashboard/InscriptionDocRecus/dashboard/classerDoc'])
 this.dialogRef.close()
 }
   }

@@ -54,20 +54,20 @@ export class CreedirectionComponent implements OnInit {
      res=>{variable.lieu_d_archivage_1_ere_age.id=res.id; 
       variable.lieu_d_archivage_1_ere_age.lieu=res.lieu ; 
       variable.lieu_d_archivage_1_ere_age.code=res.code; 
-      console.log("aff1",variable);
+       
 
       this._service.getLieuById(this.direction.lieu_d_archivage_2_eme_age).subscribe(
         res=>{variable.lieu_d_archivage_2_eme_age.id=res.id;
           variable.lieu_d_archivage_2_eme_age.lieu=res.lieu ;
           variable.lieu_d_archivage_2_eme_age.code=res.code; 
-           console.log("aff2",variable);
+         
 
 
            this._service.getTypeById(this.direction.typeDirection).subscribe(
             res=>{variable.typeDirection.id=res.id;
               variable.typeDirection.libelle_type_dir=res.libelle_type_dir ;
               variable.typeDirection.libelle_type_dir=res.libelle_type_dir; 
-               console.log("aff3",variable);
+              
 
 
            this._service.createDirection(variable).subscribe(     
@@ -93,16 +93,15 @@ export class CreedirectionComponent implements OnInit {
 
      
     
-     console.log("hiiii",this.direction);
-     console.log(variable);
+ 
       
       }
 
       opensweetalert(){
            
         Swal.fire(
-          'crée!',
-          'Votre Direction a été crée',
+          'Crée!',
+          'Votre direction a été crée',
           'success'
         ).then( result => {
           console.log(result);
@@ -111,19 +110,15 @@ export class CreedirectionComponent implements OnInit {
           
            this.direction.codedirection = "";
             this.direction.libelleDirection = "";       
-          // this.direction.lieu_d_archivage_1_ere_age = "";
-            //this.direction.lieu_d_archivage_2_eme_age ="";
-           // this.direction.typedirection = "";
+       
 
           }
         })
-     //   window.location.reload()
+     
        
     
   
-//  retour(){
-  //  window.location.reload()
-  //}
+ 
       }
   retour(){
     window.location.reload()

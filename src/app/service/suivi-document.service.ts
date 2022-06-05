@@ -12,10 +12,15 @@ export class SuiviDocumentService {
   }            
   //baseUrl : string = "http://localhost:8083/api/test/Directions/";
   isAuth:boolean =false;
- public  getDocuments() 
+  public  getDocuments() 
+  {
+    return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments");
+ }
+ public  getDocumentsDeleted() 
  {
-   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments");
+   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments/deleted");
 }
+
 getDOcumentById(id:any):Observable<any>{
   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments/" + id);
 }
@@ -25,6 +30,11 @@ public createDocument(suividocument:SuiviDocument) :Observable<any>{
 updateDocument(id:number,suividocument:SuiviDocument):Observable<any>{
   return this.http.put<any>("http://localhost:8083/api/test/SuiviDocuments/" + suividocument.id,suividocument);
 }
+deleteDocument(id:number): Observable<any>{
+  return this.http.delete<any>("http://localhost:8083/api/test/SuiviDocuments/"+id);
+  } 
 
-
+ deleteeDocument(id:number): Observable<any>{
+  return this.http.patch<any>("http://localhost:8083/api/test/SuiviDocument/"+id,{});
+  } 
 }

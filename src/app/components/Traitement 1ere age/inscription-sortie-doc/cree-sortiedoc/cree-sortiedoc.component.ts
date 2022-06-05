@@ -23,22 +23,22 @@ export class CreeSortiedocComponent implements OnInit {
  
    ngOnInit(): void {
   this.getDirections()
-  console.log(this.libelleDirections)
+   
   this.getNomenclatures()
    }
    
    public  onSubmit(){ 
- console.log(this.suividocument)
+ 
  
  
  this.service.getDirectionById(this.suividocument.libelleDirection).subscribe(
    res=>{this.suividocument.libelleDirection=res
-   console.log(this.suividocument)
+   
    //
  this.serviice.getNomenclatureById(this.suividocument.designation_Nomenclature).subscribe(
    res=>{this.suividocument.designation_Nomenclature=res
  
-     console.log(this.suividocument)
+    
  //
  
  
@@ -63,18 +63,17 @@ export class CreeSortiedocComponent implements OnInit {
    opensweetalert(){
             
      Swal.fire(
-       'crée!',
-       'Votre Document a été crée',
+       'Crée!',
+       'Votre document a été crée',
        'success'
      ).then( result => {
        console.log(result);
        if(result.isConfirmed ){
          
        
-       // this.suividocument.date_De_creation_Du_Document=;
+ 
          this.suividocument.chapitre_comptable="";       
-       // this.suividocument.nombre_De_pages = 
-         //this.suividocument.nombre_De_documents=;
+       
          this.suividocument.limite_de_conservation_1ere_age = "";
  
        }
@@ -91,9 +90,9 @@ export class CreeSortiedocComponent implements OnInit {
    async getDirections() {
   await this.service.getDirections().subscribe(
      res=>{
-       console.log(res,'hh')
+       console.log(res)
        this.libelleDirections=res,
-       console.log(this.libelleDirections,'jj')
+       console.log(this.libelleDirections)
      },
  
      error=>console.log(error)
@@ -104,7 +103,7 @@ export class CreeSortiedocComponent implements OnInit {
   await this.serviice.getNomenclatures().subscribe(
     res=>{ 
       this.designation_Nomenclatures=res,
-      console.log(this.designation_Nomenclatures,'jj')
+      console.log(this.designation_Nomenclatures)
     },
  
      error=>console.log(error)

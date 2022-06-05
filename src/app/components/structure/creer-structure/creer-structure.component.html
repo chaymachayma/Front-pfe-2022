@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Création d'un nouveau Structure centrale</h1>
+<h1 mat-dialog-title>Création d'une nouvelle Structure centrale</h1>
 <br>
 <div mat-dialog-content>
 <form #enregForm="ngForm" (ngSubmit)="enregStructure()" >
@@ -9,7 +9,7 @@
 <mat-label  for="code" >Code structure: </mat-label>
 <input  matInput type="text" placeholder="" id="code"  name="codeStructure" [(ngModel)]="structure.code"  required #code="ngModel"           
 [class.is-invalid]="code.invalid && code.touched"   >
-<small class="text-danger" [class.d-none]="code.valid || code.untouched">Code is required field</small> 
+<small class="text-danger" [class.d-none]="code.valid || code.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 
@@ -17,26 +17,26 @@
   <mat-label for="libelle">Libellé structure: </mat-label>
    <input matInput type="text" name="libelleStructure" id="libelle" placeholder="" [(ngModel)]="structure.libelle"  required pattern="^[a-zA-Z]+[a-zA-Z éèà'ç_]*$" #libelle="ngModel"           
    [class.is-invalid]="libelle.invalid && libelle.touched"   >
-   <small class="text-danger" [class.d-none]="libelle.valid || libelle.untouched">Libellé structure is required field</small> 
+   <small class="text-danger" [class.d-none]="libelle.valid || libelle.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 <mat-form-field appearance="outline">
-    <mat-label>Lieu d'archivage 1ere age </mat-label>
+    <mat-label>Lieu d'archivage 1er âge </mat-label>
     <mat-select formConroleName="lieu_archivage1ereAge" placeholder="" name="lieu1" [(ngModel)]="structure.lieu_archivage1ereAge" required #lieu_archivage1ereAge="ngModel"
      [class.is-invalid]="lieu_archivage1ereAge.invalid && lieu_archivage1ereAge.touched">
        <mat-option *ngFor="let lieu of lieux" value="{{lieu.id}}">{{lieu.lieu}}</mat-option >
     </mat-select>
     <small class="text-danger" [class.d-none]="lieu_archivage1ereAge.valid || 
-    lieu_archivage1ereAge.untouched">veuiller choisir un lieu</small> 
+    lieu_archivage1ereAge.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Lieu d'archivage 2eme age </mat-label>
+    <mat-label>Lieu d'archivage 2ème âge </mat-label>
     <mat-select formConroleName="lieu_archivage2emeAge" placeholder="" name="lieu" [(ngModel)]="structure.lieu_archivage2emeAge" 
     required #lieu_archivage2emeAge="ngModel" [class.is-invalid]="lieu_archivage2emeAge.invalid && lieu_archivage2emeAge.touched" >
     <mat-option *ngFor="let lieu of lieux" value="{{lieu.id}}">{{lieu.lieu}}</mat-option >
     </mat-select>
-    <small class="text-danger" [class.d-none]="lieu_archivage2emeAge.valid || lieu_archivage2emeAge.untouched">veuiller choisir un lieu</small> 
+    <small class="text-danger" [class.d-none]="lieu_archivage2emeAge.valid || lieu_archivage2emeAge.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 <div mat-dialog-actions [align]="'end'">

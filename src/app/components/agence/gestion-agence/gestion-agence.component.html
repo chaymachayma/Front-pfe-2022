@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
     ">
     
-    <h1 >Gestion de paramétrages des Agences </h1>
+    <h1 >Gestion de paramétrages des agences </h1>
     <br>
     
     <a class="btn btn-success"  role="button" (click)="openDialog()">+ Créer</a>
@@ -12,40 +12,35 @@
     <div class="container">
     <div style="margin-top:10px;">
         <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="recherche d'une Agence" #input>
+            <mat-label>Rechercher</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="recherche" #input>
           </mat-form-field>
           
           <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
           
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-              </ng-container>
-          
-              <!-- Progress Column -->
+         
+             
               <ng-container matColumnDef="libelleAgence">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Libellé Agence</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Libellé agence</th>
                 <td mat-cell *matCellDef="let row"> {{row.libelleAgence}} </td>
               </ng-container>
           
-              <!-- Name Column -->
+           
               <ng-container matColumnDef="codeAgence">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Agence</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code agence</th>
                 <td mat-cell *matCellDef="let row"> {{row.codeAgence}} </td>
               </ng-container>
           
              
 
               <ng-container matColumnDef="lieu_d_archivage_1_ere_age">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'archivage 1 ere age </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'archivage 1er âge </th>
                 <td mat-cell *matCellDef="let row"> {{row.lieu_d_archivage_1_ere_age.lieu}} </td>
               </ng-container>
               
               <ng-container matColumnDef="lieu_d_archivage_2_eme_age">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'archivage 2 eme age </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'archivage 2ème âge </th>
                 <td mat-cell *matCellDef="let row"> {{row.lieu_d_archivage_2_eme_age.lieu}} </td>
               </ng-container>
 

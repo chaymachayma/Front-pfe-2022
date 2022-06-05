@@ -22,7 +22,7 @@ export class GestionNomenclatureComponent implements OnInit {
   nomenclatures:any;
  nomen:any;
   searchValue!:string;
-  displayedColumns: string[] = ['id', 'code_Nomenclature', 'designation_Nomenclature', 'dureeConservation_1ereAge','dureeConservation_2emeAge','valeurHistorique_3emeAge','action'];
+  displayedColumns: string[] = ['code_Nomenclature', 'designation_Nomenclature', 'dureeConservation_1ereAge','dureeConservation_2emeAge','valeurHistorique_3emeAge','action'];
  dataSource!: MatTableDataSource<any>;
  @ViewChild(MatPaginator) paginator!: MatPaginator;
  @ViewChild(MatSort) sort!: MatSort;
@@ -48,18 +48,7 @@ export class GestionNomenclatureComponent implements OnInit {
     }
   
 
-updateNomenclature(id:number){
-  
-    this._router.navigate(['nomenclature',id]);
-  }
-  
  
-
-consulterNomenclature(id:number){
-  this._router.navigate(['consulternomenclature',id]);
- }
- deleteNomenclature(id: number){
-  this._router.navigate(['deletenomenclature',id]);}
   openDialog() {
     this.dialog.open(CreeNomenclatureComponent, {
      width:'35%'

@@ -17,54 +17,39 @@ export class FicheDeRenseignementComponent implements OnInit {
   constructor(private service:SuiviDocumentService,private route: ActivatedRoute,
     private router: Router,@Inject(MAT_DIALOG_DATA) public data : any) { }
   ngOnInit(): void {
-/*
-    if(this.id=this.route.snapshot.params['id']){
-      this.suividocument=new SuiviDocument();
-      this.service.getDOcumentById(this.id).subscribe(
-        data=>{ console.log(data);
-                 this.suividocument=data[0];
-        },
-        error=>console.log(error)
-        )
-    }
-    console.log(this.suividocument,"suiviiiiii");
-    }*/
+ 
     
-console.log(this.data,"data")
+ 
 this.suividocument=this.data[0]
-console.log(this.suividocument,"suibiii")
+
 
   }
 retour(){
  
 let d=new Date(this.data[0].date_De_creation_Du_Document)
-console.log(d,"avant") 
+ 
 let y= d.getFullYear()
 let g=this.data[0].limite_de_conservation_1ere_age
-console.log(g,"gg")
+ 
 let x=this.data[0].limite_de_conservation_1ere_age.substr(0,g.indexOf(" "))
-//console.log(x,"xxxxxxxx")
+ 
 let q=parseInt(x)
-//console.log(q,"qqqq")
+ 
 let r=y+q
 let date_alert=r.toString()
-//console.log(date_alert,"dddddd")
+ 
 d.setFullYear(r)
-
-//console.log(d,"apres")  
+  
 let date_dejour= new Date()
-//console.log(date_dejour,"datedejour")
-
-//console.log(date_dejour);
-//console.log(date_dejour>d,"comparison")
+ 
 if(date_dejour>d){
  
 Swal.fire({
 
 icon: 'success',
-title: 'le document  a fini son 1ere age',
+title: 'le document  a fini son 1er âge car la date courante > date alerte ! ',
 showConfirmButton: false,
-timer: 3000
+timer: 4500
 })
 
 }
@@ -73,9 +58,9 @@ else {
 Swal.fire({
 
 icon: 'info',
-title: 'le document n`a pas fini encore son 1 ere age',
+title: 'le document n`a pas encore fini son 1er âge car la date courante < date alerte !',
 showConfirmButton: false,
-timer: 3000
+timer: 4500
 })
 }
 window.location.reload() 

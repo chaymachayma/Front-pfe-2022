@@ -83,7 +83,7 @@ h1 {
   width: 100%;
   }
   .container{
-  max-width:1200px;
+  max-width:1260px;
   margin: 0 auto;
   }
   .example-margin {
@@ -91,6 +91,4 @@ h1 {
     font-size: 30px;
     margin-top: 5px;
   }
-  .btn{
-    margin-left: 80px;
-  }
+ 

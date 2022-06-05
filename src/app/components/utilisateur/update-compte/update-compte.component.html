@@ -9,7 +9,7 @@
 <mat-label  for="nom" >Nom: </mat-label>
 <input  matInput type="text" id="nom"  name="nom" placeholder="" [(ngModel)]="data.compte.nom"  required pattern="^[a-zA-Z]+[a-zA-Z ]*$" #nom="ngModel"           
 [class.is-invalid]="nom.invalid && nom.touched"   >
-<small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Nom is required field</small> 
+<small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 
@@ -17,14 +17,14 @@
 <mat-label for="prenom" >Prénom: </mat-label>
    <input matInput type="text" id="prenom"  name="prenom" placeholder="" [(ngModel)]="data.compte.prenom"  required pattern="^[a-zA-Z]+[a-zA-Z ]*$" #prenom="ngModel"           
 [class.is-invalid]="prenom.invalid && prenom.touched"   >
-<small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">Prénom is required field</small> 
+<small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 <mat-form-field  appearance="outline">
-  <mat-label for="password">Mot de Passe: </mat-label>
+  <mat-label for="password">Mot de passe: </mat-label>
    <input  matInput type="text" name="password" id="password" placeholder="" [(ngModel)]="data.compte.password"  required #password="ngModel"           
    [class.is-invalid]="password.invalid && password.touched"   >
-   <small class="text-danger" [class.d-none]="password.valid || password.untouched">Mot de passe is required field</small> 
+   <small class="text-danger" [class.d-none]="password.valid || password.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 
@@ -34,23 +34,23 @@
 <input matInput  type="email"  name="email" id="email" placeholder="" [(ngModel)]="data.compte.email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" 
 #email="ngModel" [class.is-invalid]="email.invalid && email.touched"/>
  <div *ngIf="email.errors && (email.invalid && email.touched)">
-   <small class="text-danger" *ngIf="email.errors['required']">Email is required field</small>
-   <small class="text-danger" *ngIf="email.errors['pattern']"> Entrer the valid Email</small>
+   <small class="text-danger" *ngIf="email.errors['required']">Champs obligatoire</small>
+   <small class="text-danger" *ngIf="email.errors['pattern']"> Entrer un Email valide</small>
  </div>
 </mat-form-field>
 
 <mat-form-field  appearance="outline">
-  <mat-label  for="libelleDirection" > libelle Direction</mat-label>
+  <mat-label  for="libelleDirection" > Libelle direction</mat-label>
   <mat-select placeholder="" name="libelle" [(ngModel)]="selectedId1" required #libelleDirection="ngModel"
   [class.is-invalid]="libelleDirection.invalid && libelleDirection.touched">
 <mat-option *ngFor="let lieu of lieux" [value]="lieu.id">{{lieu.libelleDirection}}</mat-option >
 </mat-select>
-  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">libelle Direction is required fied</small> 
+  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 <div mat-dialog-actions [align]="'end'">
   <button  class="btn" mat-dialog-close (click)="retour()"> Retour </button>
-  <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" (click) ="opensweetalert()">Valider</button> 
+  <button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" (click) ="opensweetalert()">Modifier</button> 
 </div>
 <br><br>
 </form>

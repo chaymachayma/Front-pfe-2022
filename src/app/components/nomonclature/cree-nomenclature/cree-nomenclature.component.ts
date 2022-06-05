@@ -15,21 +15,11 @@ export class CreeNomenclatureComponent implements OnInit {
 
   nomenclature=new Nomenclature();
   msg='';
-  productForm !: FormGroup; 
+ 
   constructor(   private location: Location,
-    private _service:NomenclatureService,private formBuilder : FormBuilder,private router: Router) { }
+    private _service:NomenclatureService,private router: Router) { }
   ngOnInit(): void {
-    this.productForm=this.formBuilder.group({
-      id:['',Validators.required],
-      code_Nomenclature:['',Validators.required],
-      designation_Nomenclature:['',Validators.required],
-      dureeConservation_1ereAge:['',Validators.required],
-   
-      dureeConservation_2emeAge:['',Validators.required],
-      valeurHistorique_3emeAge: ['', Validators.required],
-
-  
-  })}
+}
  public  onSubmit(){ 
         this._service.createNomenclature(this.nomenclature).subscribe(
           data=>{ 
@@ -47,8 +37,8 @@ export class CreeNomenclatureComponent implements OnInit {
       opensweetalert(){
            
           Swal.fire(
-            'crée!',
-            'Votre Nomenclature a été crée',
+            'Crée!',
+            'Votre nomenclature a été crée',
             'success'
           ).then( result => {
             console.log(result);
@@ -63,13 +53,11 @@ export class CreeNomenclatureComponent implements OnInit {
 
             }
           })
-       //   window.location.reload()
+ 
          
       
     }
-  //  retour(){
-    //  window.location.reload()
-    //}
+  
     retour(){
       window.location.reload()
     }

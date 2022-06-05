@@ -20,7 +20,7 @@ export class AgenceService {
 }
   
 
-  getAgenceById(id:number):Observable<any>{
+  getAgenceById(id:any):Observable<any>{
     return this.http.get<any>("http://localhost:8083/api/test/Agences/" + id);
   }
   

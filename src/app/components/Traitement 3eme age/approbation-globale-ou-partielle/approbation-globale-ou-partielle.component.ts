@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { SuiviDoc3emeAge } from 'src/app/models/suivi-doc-3eme-age';
 import { SuiviDoc2emeAgeServiceService } from 'src/app/service/suivi-doc2eme-age-service.service';
+import { SuiviDocumentService } from 'src/app/service/suivi-document.service';
 import { SuiviDocument3emeAgeService } from 'src/app/service/suivi-document3eme-age.service';
 import { InvitationMembresComponent } from '../invitation-membres/invitation-membres.component';
 import { LettreApprobationComponent } from '../lettre-approbation/lettre-approbation.component';
@@ -18,7 +19,7 @@ import { LettreApprobationComponent } from '../lettre-approbation/lettre-approba
 export class ApprobationGlobaleOuPartielleComponent implements OnInit {
   suividocument=new SuiviDoc3emeAge();
   date_De_creation_Du_Document:any;
-  //LocalDate:String=new Date().toLocaleString();
+
   Datedeversemnent2emeage:any;
   LocalDate:String=new Date().toLocaleString();
   doc:SuiviDoc3emeAge[]=[];
@@ -29,25 +30,41 @@ export class ApprobationGlobaleOuPartielleComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   id!:number 
-  constructor(private _service:SuiviDocument3emeAgeService,private service:SuiviDoc2emeAgeServiceService,private _router:Router,private dialog:MatDialog) { }
+  constructor(private _service:SuiviDocument3emeAgeService,private service:SuiviDoc2emeAgeServiceService,private _router:Router,private dialog:MatDialog,private servicce:SuiviDocumentService) { }
   ngOnInit(): void {
     this._service.getDocuments().subscribe(
       data=>{
-        console.log(data,"hethi 2eme age")
+        
         this.dataSource=new MatTableDataSource(data)
         
       }
     )
 }     
    
-  openDialoogg(id:number) { 
-    this._router.navigate([`/dashboard/DocumentsDetruits/${id}`])
+  openDialoogg(d:any) { 
+    this._service.deleteDocument(d.id).subscribe(
+      res=>{
+        this.service.deleteDocument(d.codedocument).subscribe(
+          res=>{
+            this.servicce.deleteeDocument(d.codedocument).subscribe(
+          res=>{
+            
+            this._router.navigateByUrl(`/dashboard/DocumentsDetruits`)
+          }
+        )
+      
+      },
+      error=>
+      console.log("erreur")
+     ) },
+     error=>
+     console.log("erreur")
+    )
   }
-
+ 
 
   openDialooogg(id:number){
-    this._router.navigateByUrl(`/dashboard/DocumentsHistriques/${id}`)
- 
+    this._router.navigate([`/dashboard/DocumentsHistriques/${id}`])
  }
 
  applyFilter(event: Event) {

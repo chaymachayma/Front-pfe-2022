@@ -12,34 +12,31 @@
     <div class="container">
     <div style="margin-top:10px;">
         <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            <mat-label>Rechercher</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
           </mat-form-field>
           
           <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
           
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-              </ng-container>
+            
+            
           
-              <!-- Progress Column -->
+      
               <ng-container matColumnDef="code">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Code structure </th>
                 <td mat-cell *matCellDef="let row"> {{row.code}} </td>
               </ng-container>
           
-              <!-- Name Column -->
+        
               <ng-container matColumnDef="libelle">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Libélle structure</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Libellé structure</th>
                 <td mat-cell *matCellDef="let row"> {{row.libelle}} </td>
               </ng-container>
           
               <!-- Fruit Column -->
               <ng-container matColumnDef="lieu_archivage1ereAge">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu d'archivage 1ere âge</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu d'archivage 1er âge</th>
                 <td mat-cell *matCellDef="let row"> {{row.lieu_archivage1ereAge.lieu}} </td>
               </ng-container>
 

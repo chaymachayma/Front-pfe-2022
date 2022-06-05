@@ -18,12 +18,12 @@ import { SuiviDoc2emeAgeServiceService } from 'src/app/service/suivi-doc2eme-age
 export class ReceptionDocComponent implements OnInit {
   suividocument=new SuiviDoc3emeAge();
   date_De_creation_Du_Document:any;
-  //LocalDate:String=new Date().toLocaleString();
+
    Datedeversemnent3emeage:any;
    LocalDate:String=new Date().toLocaleString();
    doc:SuiviDoc2emeAge[]=[];
    searchValue!:string;
-   displayedColumns: string[]=['codeDirection','libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','date_De_creation_Du_Document'/*,'Datedeversemnent2emeage'*/,'action'];
+   displayedColumns: string[]=['codedirection','libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','date_De_creation_Du_Document','action'];
    
    dataSource!: MatTableDataSource<any>;
    @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,21 +32,39 @@ export class ReceptionDocComponent implements OnInit {
    constructor(private service:SuiviDoc2emeAgeServiceService,private _router:Router,private dialog:MatDialog) { }
   ngOnInit(): void {
     this.service.getDocuments().subscribe(
-      data=>{ console.log(data,"response recieved");      
-      data.forEach((item:any)=>{      
-              this.doc.push(item)
-      }
+      data=>{ console.log(data,"response recieved"); 
+      
+      
+      data.forEach((item:any)=>{  
+        let d=new Date(item.date_de_versement_2eme_age)
+         
+        let y= d.getFullYear()
+        let g=item.limite_de_conservation_2eme_age
+       
+        let x=item.limite_de_conservation_2eme_age.substr(0,g.indexOf(" "))
+       
+        let q=parseInt(x)
+        
+        let r=y+q
+        let date_alert=r.toString()
+      
+        d.setFullYear(r)
+        let date_dejour= new Date()
+        
+        if(!(date_dejour<d)){
+          this.doc.push(item)
+        }       
+       }
+        )
+       this.dataSource=new MatTableDataSource(this.doc) ;              
+       },
+       error=>console.log("exception occured")
        )
-      this.dataSource=new MatTableDataSource(this.doc) ;              
-      },
-      error=>console.log("exception occured")
-      )
-      console.log(this.doc,"doc");
-  }
+       console.log(this.doc,"doc");
+   }
 
   opendialog(item :any){
-    console.log(item,'hethi eli neb3ethou');
-    console.log("hne 7echetna biha")
+  
    this.dialog.open(AjouterReceptionDoc3emeComponent, {
 
      width:'36%',

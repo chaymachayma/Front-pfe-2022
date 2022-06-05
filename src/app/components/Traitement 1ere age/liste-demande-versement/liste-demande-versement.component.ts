@@ -31,7 +31,7 @@ export class ListeDemandeVersementComponent implements OnInit {
   constructor(private _service:DemandeDeVersementService,private _router:Router,private dialog:MatDialog) { }
 
   ngOnInit(): void {
-   // console.log(this.data,"hethi hiya jet ")
+  
     this.suividocument=this.data
     this._service.getDemandes().subscribe(
       data=>{ console.log("response recieved");

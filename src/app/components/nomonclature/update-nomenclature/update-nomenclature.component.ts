@@ -42,7 +42,7 @@ export class UpdateNomenclatureComponent implements OnInit {
     
     icon:'warning',
     showCancelButton:true,
-    confirmButtonText:'oui,modifiez-le!',
+    confirmButtonText:'Oui,modifiez-le!',
     cancelButtonText:'Non,gardez-le'
       
   }).then((result) => {
@@ -53,14 +53,14 @@ export class UpdateNomenclatureComponent implements OnInit {
     if (result.value) {
       Swal.fire(
         'modifié!',
-        
+        'Votre nomenclature a été modifié',
         'success'
       )
     window.location.reload()
     }else if (result.dismiss==Swal.DismissReason.cancel){
     Swal.fire(
       'Annulé',
-       
+      'Votre nomenclature na`pas été modifié',
       'error'
     )
 

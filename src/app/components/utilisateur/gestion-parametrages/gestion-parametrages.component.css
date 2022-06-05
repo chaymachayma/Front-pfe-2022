@@ -83,12 +83,6 @@ font-size: 14px;
 width: 100%;
 }
 .container{
-max-width:1400px;
+max-width:1200px;
 margin: 0 auto;
-}
-th{
-font-size: 22px;
-}
-td{
-   font-size: 20px;
 }

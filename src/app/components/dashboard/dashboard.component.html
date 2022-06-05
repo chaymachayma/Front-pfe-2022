@@ -7,54 +7,54 @@
 
  <mat-card class="card0">
   <mat-card-header class="header00">
-    <img width="1" mat-card-avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0iFTsRagcxqIHDkchvDQWFnLWswn_q6IUEGQTJBNlMofExPFGLNY3z6YsAWs0ytM86bM&usqp=CAU" > 
+ <mat-icon style="margin-left:124px; font-size: 43px; ">people</mat-icon>
 </mat-card-header>
 
 <mat-card-content class="dashboard-card">
   <br><br>
   <div >
-    <h3><strong><b>1</b></strong> 
+    <h3><strong><b>{{countCompte}}</b></strong> 
       <br>
-     Comptes Utilisateurs</h3>  
+     Comptes utilisateurs</h3>  
   </div> 
 </mat-card-content>
 </mat-card>
 
 
  <mat-card class="card01" >
-  <mat-card-header class="header0">         
-    <img width="1" mat-card-avatar src="https://img.freepik.com/vecteurs-libre/dessin-anime-retro-banque-palais-justice-illustration-colonnes-isolee-blanc_53562-8133.jpg" > 
+  <mat-card-header class="header0">   
+    <mat-icon style="font-size:30px; margin-left: 99px;">account_balance</mat-icon>      
   </mat-card-header>
   <mat-card-content class="dashboard-card-content01">
     <div >
-      <h3><strong><b>26</b></strong> 
+      <h3><strong><b>{{countDir}}</b></strong> 
         <br>
-      Directions Regionales</h3>  
+      Directions regionales</h3>  
     </div> 
   </mat-card-content>
   </mat-card>
 
 
   <mat-card class="card02" >
-    <mat-card-header class="header1">         
-      <img width="1" mat-card-avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP4z51pNzWVmDY5pj0vrXY6PXsFl_AzWvNsxlc6jbyYa2i1NTHPfr_iwWdzHcWa74gSqo&usqp=CAU" > 
+    <mat-card-header class="header1">    
+      <mat-icon style="font-size:30px; margin-left: 103px;">account_balance</mat-icon>        
     </mat-card-header>
     <mat-card-content class="dashboard-card-content01">
       <div >
-        <h3><strong><b>5</b></strong> 
+        <h3><strong><b>{{countStructure}}</b></strong> 
           <br>
-          Structures Centrales</h3>  
+          Structures centrales</h3>  
       </div> 
     </mat-card-content>
     </mat-card>
 
     <mat-card class="card03" >
       <mat-card-header class="header2">         
-        <img width="1" mat-card-avatar src="https://bankeo.info/wp-content/uploads/2014/09/Banque-Bank.png" > 
+        <mat-icon style="font-size:30px; margin-left: 103px;" >business</mat-icon>
       </mat-card-header>
       <mat-card-content class="dashboard-card-content01">
         <div >
-          <h3><strong><b>11</b></strong> 
+          <h3><strong><b>{{countAgence}}</b></strong> 
             <br>
              Agences</h3>  
         </div> 
@@ -67,10 +67,10 @@
    <mat-card class="card000">
     <mat-card-header >     
     </mat-card-header>
-    <h3>Nombre des documents</h3>  
-    <img mat-card-image src="assets/img/Capture42.PNG">
-    <mat-card-content class="dashboard-card-content1">
-     <div></div>
+    <mat-card-content style="width:100%;">
+
+     <app-chart></app-chart>
+   
     </mat-card-content>
    </mat-card>
    <br>
@@ -78,36 +78,13 @@
    
    <mat-card class="card1" >
     <mat-card-header>         
-      <mat-card-title>Documents de 1ere Age</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="assets/img/Capt7.PNG">
-    <mat-card-content class="dashboard-card-content3">
-     <div></div>
+    <mat-card-content style="margin-left:27px; width:10px; height:50px;">
+     <app-chart-poucentage1></app-chart-poucentage1> 
     </mat-card-content>
     </mat-card>
     <br>
 
-
-    <mat-card class="card2" >
-      <mat-card-header>         
-        <mat-card-title>Documents de 2éme Age</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="assets/img/Capt8.PNG">
-      <mat-card-content class="dashboard-card-content4">
-       <div></div>
-      </mat-card-content>
-      </mat-card>
-      <br>
-
-      <mat-card class="card3" >
-        <mat-card-header>         
-          <mat-card-title>Documents de 3éme Age</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Capt5.PNG">
-        <mat-card-content class="dashboard-card-content5">
-         <div></div>
-        </mat-card-content>
-        </mat-card>
 
       
      

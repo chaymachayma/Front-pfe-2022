@@ -20,12 +20,12 @@ export class InscriptionDocRecusComponent implements OnInit {
 
   suividocument=new SuiviDoc2emeAge();
   date_De_creation_Du_Document:any;
-  //LocalDate:String=new Date().toLocaleString();
+ 
   Datedeversemnent2emeage:any;
   LocalDate:String=new Date().toLocaleString();
   doc:SuiviDoc2emeAge[]=[];
   searchValue!:string;
-  displayedColumns: string[]=[/*'code_centre',*//*'libelleDirection',*/'chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','date_De_creation_Du_Document','date_De_entree_Du_Document','Datedeversemnent2emeage','limite_de_conservation_2eme_age','action'];
+  displayedColumns: string[]=['chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','date_De_creation_Du_Document','date_De_entree_Du_Document','Datedeversemnent2emeage','limite_de_conservation_2eme_age','action'];
   
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -35,27 +35,16 @@ export class InscriptionDocRecusComponent implements OnInit {
   ngOnInit(): void {
     this._service.getDocuments().subscribe(
       data=>{
-        console.log(data,"hethi 2eme age")
+       
         this.dataSource=new MatTableDataSource(data)
         
       }
     )
     
-    /*this.service.getDocuments().subscribe(
-      data=>{ console.log(data,"response recieved");      
-      data.forEach((item:any)=>{      
-              this.doc.push(item)
-      }
-       )
-      this.dataSource=new MatTableDataSource(this.doc) ;              
-      },
-      error=>console.log("exception occured")
-      )
-      console.log(this.doc,"doc");
-  }*/
+   
 }
   opendialog(item :any){
-    console.log(item,'hethi eli neb3ethou');
+  
    this.dialog.open(AjoutInscriptionComponent, {
      width:'36%',
      data:[item]

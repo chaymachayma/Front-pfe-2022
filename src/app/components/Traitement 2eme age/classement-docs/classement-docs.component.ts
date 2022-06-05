@@ -10,6 +10,8 @@ import { AjouterReceptionDocComponent } from '../ajouter-reception-doc/ajouter-r
 import { AjouterEmplacementComponent } from '../ajouter-emplacement/ajouter-emplacement.component';
 import { SuiviDoc2emeAgeServiceService } from 'src/app/service/suivi-doc2eme-age-service.service';
 import { FicheDeRenseignement2emeAgeComponent } from '../fiche-de-renseignement2eme-age/fiche-de-renseignement2eme-age.component';
+import { EnvoyerDemandeConsultationComponent } from '../../Consultation 2eme age/envoyer-demande-consultation/envoyer-demande-consultation.component';
+import { Nomenclature } from 'src/app/models/nomenclature';
 
 
 @Component({
@@ -36,22 +38,21 @@ export class ClassementDocsComponent implements OnInit {
   ngOnInit(): void {
     this.service.getDocuments().subscribe(
       data=>{ 
-      console.log(data,"response recieved");     
+          
       this.dataSource=new MatTableDataSource(data) ; 
       this.doc=data;
       this.sortedData=this.doc;
-      console.log("slice",this.doc.slice());                      
+                         
       },
       error=>console.log("exception occured")
       )
-      console.log(this.doc,"doc");
-      console.log("hello",this.sortedData);
+     
       
    }
    
 
   opendialog(item :any){
-    console.log(item,'hethi eli neb3ethou');
+   
    this.dialog.open(AjouterEmplacementComponent, {
      width:'36%',
      data:[item]
@@ -85,24 +86,27 @@ sortData(sort: Sort) {
             return compare(a.emplSalleConservation, b.emplSalleConservation, isAsc);
         case 'EmplCote':
           return compare(a.emplCote, b.emplCote, isAsc);
-
+        case 'designation_Nomenclature':
+          return compare(a.designation_Nomenclature ,b.designation_Nomenclature ,isAsc)
       default:
         return 0;
     }
+    
   });
 }
-applyFilter(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.dataSource.filter = filterValue.trim().toLowerCase();
-  this.sortedData=this.dataSource.data;
-  if (this.dataSource.paginator) {
-    this.dataSource.paginator.firstPage();
-  }
-}
+
 Onchange(item:any){
-  console.log(item,"check")
+ 
   this.selected=item
   }
+  consulter(){
+    this.dialog.open(EnvoyerDemandeConsultationComponent, {
+    width:'40%',
+     
+     
+    });
+    }
+
 openDialogg(){
   this.dialog.open(FicheDeRenseignement2emeAgeComponent, {
   width:'42%',
@@ -111,9 +115,13 @@ openDialogg(){
   });
   }
 }
-function compare(a: number | string|Date, b: number | string|Date, isAsc: boolean) {
+
+
+  
+function compare(a: number | string|Date | Nomenclature, b: number | string|Date |Nomenclature, isAsc: boolean) {
 return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
+
 
 
 

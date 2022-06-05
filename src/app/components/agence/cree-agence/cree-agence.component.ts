@@ -43,13 +43,13 @@ this.getLieu();
      res=>{variable.lieu_d_archivage_1_ere_age.id=res.id; 
       variable.lieu_d_archivage_1_ere_age.lieu=res.lieu ; 
       variable.lieu_d_archivage_1_ere_age.code=res.code; 
-      console.log("aff1",variable);
+     
 
       this._service.getLieuById(this.agence.lieu_d_archivage_2_eme_age).subscribe(
         res=>{variable.lieu_d_archivage_2_eme_age.id=res.id;
           variable.lieu_d_archivage_2_eme_age.lieu=res.lieu ;
           variable.lieu_d_archivage_2_eme_age.code=res.code; 
-           console.log("aff2",variable);
+           
            this._service.createAgence(variable).subscribe(     
     
             data =>{
@@ -68,8 +68,8 @@ this.getLieu();
     }
     
     )  
-     console.log("hiiii",this.agence);
-     console.log(variable);
+ 
+     
       
       }
       getLieu(){
@@ -81,8 +81,8 @@ this.getLieu();
       opensweetalert(){
            
           Swal.fire(
-            'crée!',
-            'Votre Agence a été crée',
+            'Crée!',
+            'Votre agence a été crée',
             'success'
           ).then( result => {
             console.log(result);
@@ -96,15 +96,13 @@ this.getLieu();
 
             }
           })
-       //   window.location.reload()
+       
          
       
     }
-  //  retour(){
-    //  window.location.reload()
-    //}
+ 
     retour(){
-      // window.location.reload()
+       
     }
 }
 

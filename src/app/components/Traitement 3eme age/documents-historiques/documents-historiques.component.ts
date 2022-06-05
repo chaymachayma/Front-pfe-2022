@@ -22,33 +22,32 @@ export class DocumentsHistoriquesComponent implements OnInit {
  
  displayedColumns: string[]=['code_centre','codedirection','libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','date_De_creation_Du_Document','limite_de_conservation_3eme_age'];
  dataSource!: MatTableDataSource<any>;
-id!:number
+  id!:number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   data:any
  constructor( private route:ActivatedRoute, private service:SuiviDocument3emeAgeService,private _router:Router,private dialog:MatDialog) { }
 
+ ngOnInit(): void {
+  this.suividocument=new SuiviDoc3emeAge()
+ this.id=this.route.snapshot.params['id']
 
-  ngOnInit(): void {
-    this.suividocument=new SuiviDoc3emeAge()
-   this.id=this.route.snapshot.params['id']
-   console.log(this.id,"hetha id")
-   this.service.getDOcumentById(this.id).subscribe(
-     data=>{console.log(data,"gg")
-     this.suividocument=data;
-     this.dataSource=new MatTableDataSource([data]);
-     console.log(this.dataSource,"datasource")
-           },
-     error=>console.log(error));
+ this.service.getDOcumentById(this.id).subscribe(
+   data=>{
+   this.suividocument=data;
+   this.dataSource=new MatTableDataSource([data]);
+   
+         },
+   error=>console.log(error));
+}
+
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
   }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
 
 }
 retour()

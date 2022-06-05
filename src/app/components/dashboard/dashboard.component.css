@@ -25,10 +25,8 @@
   right:-100px;
 }
 
-.header00{
-  margin-left: 33px;
- 
-}
+
+
 
 .header0{
   margin-left: 28px;
@@ -72,14 +70,16 @@
   text-align: center;
   height: 110px;
   width: 380px;
+  top:-10px;
+  margin-left: 5px;
 }
 
 .card01{
   text-align: center;
   height:110px;
   width: 380px;
-  margin: 0 415px 1px;
-  top:-110px;
+  margin: 0 418px 1px;
+  top:-120px;
 }
 
 .card02{
@@ -87,42 +87,43 @@
   height: 110px;
   width: 380px;
   margin: 0 835px 1px;
-  top:-220px;
+  top:-230px;
 }
 
 .card03{
   text-align: center;
   height: 110px;
-  width: 380px;
+  width: 385px;
   margin: 0 1250px 1px;
-  top:-331px;
+  top:-341px;
 }
 
 .card1{
-  height: 150px;
-  width: 300px;
-  top:-290px;
-
+  height: 223px;
+  width: 290px;
+  top:-348px;
+  margin-left: 5px;
 }
 
 .card2{
   height: 150px;
   width: 300px;
   margin: 0 320px 16px;
-  top:-460px;
+  top:-490px;
 }
 
 .card3{
   height: 150px;
   width: 300px;
   margin: 0 640px 16px;
-  top:-645px;
+  top:-675px;
 }
 
 .card000{
   height: 445px;
   width: 1630px;
-  top:-290px;
+  top:-335px;
+  margin-left: 5px;
 }
 .dashboard-c{
 

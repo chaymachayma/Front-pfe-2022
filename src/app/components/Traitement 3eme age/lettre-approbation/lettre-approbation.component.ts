@@ -9,7 +9,8 @@ import { invitationComission} from 'src/app/models/structure';
   styleUrls: ['./lettre-approbation.component.scss']
 })
 export class LettreApprobationComponent implements OnInit {
- 
+  LocalDate:String=new Date().toLocaleDateString();
+  
   constructor(private router:Router,public dialogRef: MatDialogRef<LettreApprobationComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private dialog:MatDialog) { }
 
   ngOnInit(): void {

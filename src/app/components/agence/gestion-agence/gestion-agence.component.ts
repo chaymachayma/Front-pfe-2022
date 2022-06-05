@@ -22,7 +22,7 @@ export class GestionAgenceComponent implements OnInit {
   agences:any;
   agen:any;
   searchValue!:string;
-  displayedColumns: string[] = ['id', 'codeAgence', 'libelleAgence','lieu_d_archivage_1_ere_age','lieu_d_archivage_2_eme_age','action'];
+  displayedColumns: string[] = ['codeAgence', 'libelleAgence','lieu_d_archivage_1_ere_age','lieu_d_archivage_2_eme_age','action'];
  dataSource!: MatTableDataSource<any>;
  @ViewChild(MatPaginator) paginator!: MatPaginator;
  @ViewChild(MatSort) sort!: MatSort;
@@ -48,18 +48,6 @@ error=>console.log("exception occured")
     }
   
 
-updateAgence(id:number){
-  
-    this._router.navigate(['updateagence',id]);
-  }
-  
- 
-
-consulterAgence(id:number){
-  this._router.navigate(['consulteragence',id]);
- }
- deleteAgence(id: number){
-  this._router.navigate(['deleteagence',id]);}
   openDialog() {
     this.dialog.open(CreeAgenceComponent, {
      width:'35%'

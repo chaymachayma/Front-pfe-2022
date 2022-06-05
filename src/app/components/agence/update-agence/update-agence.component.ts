@@ -29,10 +29,10 @@ export class UpdateAgenceComponent implements OnInit {
     this.getLieu();
     this.selectedId1=this.data.agence.lieu_d_archivage_1_ere_age.id ;
     this.selectedId2=this.data.agence.lieu_d_archivage_2_eme_age.id ;
-   console.log(this.data.agence);
+    
 }
 onModif(){  
-  console.log(this.data.agence,"avant")
+ 
   this.service.getLieuById(this.selectedId1).subscribe(
     res=> {
       this.data.agence.lieu_d_archivage_1_ere_age=res;
@@ -43,7 +43,7 @@ onModif(){
           this.service.updateAgence(this.data.agence.id,this.data.agence).subscribe(
 
             data=>{
-                console.log(data,"data received")
+                console.log(data)
               },
             error=>console.error());
         }
@@ -62,10 +62,10 @@ onModif(){
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',
-      text: "Vous ne pourrez pas récupérer ce fichier imaginaire?",
+ 
       icon:'warning',
       showCancelButton:true,
-      confirmButtonText:'oui,modifiez-le!',
+      confirmButtonText:'Oui,modifiez-le!',
       cancelButtonText:'Non,gardez-le'
         
     }).then((result) => {
@@ -75,15 +75,15 @@ onModif(){
       }
       if (result.value) {
         Swal.fire(
-          'modifié!',
-          'Votre fichier imaginaire a été modifié',
+          'Modifié!',
+          'Votre agence a été modifié',
           'success'
         )
       window.location.reload()
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        'Votre fichier imaginaire est en sécurité :)',
+        'Votre agence n`a pas été modifié',
         'error'
       )
 

@@ -31,17 +31,16 @@ export class UpdateCompteComponent implements OnInit {
 }
 
       enregCompte(){      
-        console.log(this.selectedId1,"fff")
+ 
             this.service.getDirectionById(this.selectedId1).subscribe(
               
               res=>{
                 this.data.compte.libelleDirection=res;
-                console.log(res,"res")
-                console.log(this.data)
+                 
                 this._service.updateCompte(this.data.compte.id,this.data.compte).subscribe(
                
                   data=>{
-                      console.log(data,"data received")
+                      console.log(data)
                     },
                   error=>console.error());
               }
@@ -54,10 +53,9 @@ export class UpdateCompteComponent implements OnInit {
   opensweetalert(){
     Swal.fire({
       title:'Êtes-vous sûre?',
-      text: "Vous ne pourrez pas récupérer ce fichier imaginaire?",
       icon:'warning',
       showCancelButton:true,
-      confirmButtonText:'oui,modifiez-le!',
+      confirmButtonText:'Oui,modifiez-le!',
       cancelButtonText:'Non,gardez-le'
         
     }).then((result) => {
@@ -68,14 +66,14 @@ export class UpdateCompteComponent implements OnInit {
       if (result.value) {
         Swal.fire(
           'modifié!',
-          'Compte utilisateur mofidié',
+          'Le compte utilisateur a été modifié',
           'success'
         )
       window.location.reload()
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        'Votre fichier imaginaire est en sécurité :)',
+        'Le compte utilisateur n`a pas été modifié',
         'error'
       )
       }
@@ -83,11 +81,7 @@ export class UpdateCompteComponent implements OnInit {
  
 
   }
- /* getDirections(){
-    this.service.getDirections().subscribe(
-    res=>this.lieux=res
-    )
-    }*/
+ 
 
     
 async getDirections() {

@@ -13,7 +13,11 @@ export class SuiviDoc2emeAgeServiceService {
   {
     return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments2eme");
  }
- getDOcumentById(id:number):Observable<any>{
+ public  getDocumentsDeleted() 
+ {
+   return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments2eme/deleted");
+}
+ getDOcumentById(id:any):Observable<any>{
    return this.http.get<any>("http://localhost:8083/api/test/SuiviDocuments2eme/" + id);
  }
  public createDocument(suividocument2emeage:SuiviDoc2emeAge) :Observable<any>{
@@ -23,5 +27,7 @@ export class SuiviDoc2emeAgeServiceService {
  update(id:number, suividocument2emeage:SuiviDoc2emeAge):Observable<any>{
   return this.http.put<any>("http://localhost:8083/api/test/SuiviDocument2eme/" + suividocument2emeage.id,suividocument2emeage);
 }
-
+deleteDocument(id:number): Observable<any>{
+  return this.http.patch<any>("http://localhost:8083/api/test/SuiviDocument2eme/"+id,{});
+  } 
 }

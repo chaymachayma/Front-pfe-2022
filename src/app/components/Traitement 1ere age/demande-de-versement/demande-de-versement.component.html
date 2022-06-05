@@ -6,11 +6,11 @@
 
 
 <mat-form-field  appearance="outline">
-<mat-label  for="Numerodemande" >Numero Demande</mat-label>
+<mat-label  for="Numerodemande" >Numéro demande :</mat-label>
 <input  matInput placeholder="" type="number" id="num_dde" 
  name="num" [(ngModel)]="demande.num_dde"  required #num_dde="ngModel"           
 [class.is-invalid]=" num_dde.invalid && num_dde.touched"   >
-<small class="text-danger" [class.d-none]=" num_dde.valid ||  num_dde.untouched"> Numero Demande is required field</small> 
+<small class="text-danger" [class.d-none]=" num_dde.valid ||  num_dde.untouched"> Champs obligatoire</small> 
 </mat-form-field>
 
 <mat-form-field  appearance="outline">
@@ -18,7 +18,7 @@
     <input  matInput placeholder="" type="date" id=" date_dde" 
      name="datedde" [(ngModel)]=" demande. date_dde"  required #date_dde="ngModel"           
     [class.is-invalid]=" date_dde.invalid && date_dde.touched"   >
-    <small class="text-danger" [class.d-none]=" date_dde.valid || date_dde.untouched">Date de la demande is required field</small> 
+    <small class="text-danger" [class.d-none]=" date_dde.valid || date_dde.untouched">Champs obligatoire</small> 
     </mat-form-field>
 
     <mat-form-field  appearance="outline">
@@ -26,34 +26,34 @@
         <input matInput placeholder="" type="text" id="objet" 
          name="obj" [(ngModel)]="demande.objet"  required #objet="ngModel"           
         [class.is-invalid]="objet.invalid &&objet.touched"   >
-        <small class="text-danger" [class.d-none]="objet.valid || objet.untouched">Objet is required field</small> 
+        <small class="text-danger" [class.d-none]="objet.valid || objet.untouched">Champs obligatoire</small> 
         </mat-form-field>
 
         <mat-form-field  appearance="outline">
-            <mat-label  for="nbrCarton" >Nombre Carton: </mat-label>
+            <mat-label  for="nbrCarton" >Nombre de cartons: </mat-label>
             <input matInput placeholder="" type="number" id="nbrCarton" 
              name="nbr" [(ngModel)]="demande.nbrCarton"  required #nbrCarton="ngModel"           
             [class.is-invalid]="nbrCarton.invalid &&nbrCarton.touched"   >
-            <small class="text-danger" [class.d-none]="nbrCarton.valid || nbrCarton.untouched">Nombre Carton is required field</small> 
+            <small class="text-danger" [class.d-none]="nbrCarton.valid || nbrCarton.untouched">Champs obligatoire</small> 
             </mat-form-field>
 
             <mat-form-field  appearance="outline">
-                <mat-label  for="expediteur" > Expediteur: </mat-label>
+                <mat-label  for="expediteur" > Expéditeur: </mat-label>
                 <mat-select placeholder="" name="libelle" [(ngModel)]="demande.expediteur" required #expediteur="ngModel"
                 [class.is-invalid]="expediteur.invalid && expediteur.touched">
             <mat-option *ngFor="let item of Expediteurs" value="{{item.id}}">{{item.libelleDirection}}</mat-option >
              </mat-select>
-                <small class="text-danger" [class.d-none]=" expediteur.valid ||  expediteur.untouched">Expediteur 1ere age is required fied</small> 
+                <small class="text-danger" [class.d-none]=" expediteur.valid ||  expediteur.untouched">Champs obligatoire</small> 
                 </mat-form-field>
 
                      
             <mat-form-field  appearance="outline">
-                <mat-label  for="designation_nomenclature" >designation_Nomenclature: </mat-label>
+                <mat-label  for="designation_nomenclature" >Désignation nomenclature: </mat-label>
                 <mat-select placeholder="" name="designation" [(ngModel)]="demande.designation_nomenclature" required #designation_nomenclature="ngModel"
                 [class.is-invalid]="designation_nomenclature.invalid && designation_nomenclature.touched">
             <mat-option *ngFor="let itemm of designation_Nomenclatures" value="{{itemm.id}}">{{itemm.designation_Nomenclature}}</mat-option >
              </mat-select>
-                <small class="text-danger" [class.d-none]=" designation_nomenclature.valid ||  designation_nomenclature.untouched"> Designation_Nomenclature is required field</small> 
+                <small class="text-danger" [class.d-none]=" designation_nomenclature.valid ||  designation_nomenclature.untouched">Champs obligatoire</small> 
                 </mat-form-field>
 
                 <mat-form-field  appearance="outline">
@@ -62,7 +62,7 @@
                     [class.is-invalid]="destinataire.invalid && destinataire.touched">
                 <mat-option *ngFor="let Destinataire of Lieux" value="{{Destinataire.id}}">{{Destinataire.lieu}}</mat-option >
                  </mat-select>
-                    <small class="text-danger" [class.d-none]=" destinataire.valid || destinataire.untouched"> Destinataire is required field</small> 
+                    <small class="text-danger" [class.d-none]=" destinataire.valid || destinataire.untouched"> Champs obligatoire</small> 
                     </mat-form-field>
                     <div mat-dialog-actions [align]="'end'">
                         

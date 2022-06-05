@@ -24,10 +24,10 @@ export class DemandeDeVersementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDirections()
-    console.log(this.Expediteurs)
+ 
     this.getNomenclatures()
     this.getLieux()
-    console.log(this.data ,'init data')
+   
   }
 
 
@@ -35,16 +35,11 @@ export class DemandeDeVersementComponent implements OnInit {
 
     this.service.getDirectionById(this.demande.expediteur).subscribe(
       res=>{this.demande.expediteur=res
-      console.log(this.demande)
-      //this.service.getLieuById(this.demande.Destinataire).subscribe(
-        //res=>{this.demande.Destinataire=res
-        //console.log(this.demande)
-//
+      
+ 
 this.service.getLieuById(this.demande.destinataire).subscribe(
   res=>{this.demande.destinataire=res
-  
-
-        //
+ 
 
       this.serviice.getNomenclatureById(this.demande.designation_nomenclature).subscribe(
         res=>{
@@ -54,7 +49,7 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
    
     this._service.createDemande(this.demande).subscribe(
       data=>{ 
-        console.log("amal",data) 
+         
         console.log("reponse received");
         
         
@@ -82,9 +77,9 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
   async getDirections() {
     await this.service.getDirections().subscribe(
        res=>{
-         console.log(res,'hh')
+         
          this.Expediteurs=res,
-         console.log(this.Expediteurs,'jj')
+         console.log(this.Expediteurs)
        },
    
        error=>console.log(error)
@@ -95,7 +90,7 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
     await this.serviice.getNomenclatures().subscribe(
       res=>{ 
         this.designation_Nomenclatures=res,
-        console.log(this.designation_Nomenclatures,'jj')
+        console.log(this.designation_Nomenclatures)
       },
    
        error=>console.log(error)
@@ -110,7 +105,7 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
     await this.service.getLieu().subscribe(
       res=>{ 
         this.Lieux=res,
-        console.log(this.Lieux,'jj')
+        console.log(this.Lieux)
       },
    
        error=>console.log(error)
@@ -118,7 +113,7 @@ this.service.getLieuById(this.demande.destinataire).subscribe(
       
     )
  
-  //  
+   
    }
    
     

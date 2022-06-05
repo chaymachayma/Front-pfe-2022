@@ -1,0 +1,37 @@
+<div id="demo" style="margin-top: 10px">
+    <h1 mat-dialog-title style="color:blue"  >L’établissement d’une fiche de sortie de document:</h1>
+   
+  <br>
+  <div mat-dialog-content style="font-size: 20px">
+   
+      <mat-label><b>N° enregistrement:</b></mat-label> {{demande.numero_document.numero_document}}
+      <br>
+      <br>
+      <mat-label><b>Service demandeur:</b></mat-label> {{demande.libelleAgence.libelleAgence}}
+      <br>
+      <br>
+      <mat-label ><b>Date de sortie: </b></mat-label> {{demande.date_sortie}}
+      <br>
+      <br>
+      <mat-label ><b>Date de réintégration: </b></mat-label> {{demande.date_retour}}
+     
+      <br>
+      <br>
+     
+     
+      <mat-label><b>Code du document communiqué:</b></mat-label> {{demande.codedocument.codedocument}}
+   
+  <br><br><br>
+  <div mat-dialog-actions [align]="'end'">
+    <button  class="btn" mat-dialog-close=""   > Retour </button>
+    <button style="background-color:#cf2b4f; width:93px; height:35px;" printSectionId="demo" color="warn"  ngxPrint>Imprimer</button>
+    
+  
+  
+  </div>
+  <br><br>
+  
+  </div>
+   
+   
+  

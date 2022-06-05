@@ -33,7 +33,7 @@ export class TraiterDemandeComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<TraiterDemandeComponent>,private dialog:MatDialog,private service:DemandeDeVersementService,private _router:Router,private route:ActivatedRoute,private location: Location, @Inject(MAT_DIALOG_DATA) public data : any) { }
 
   ngOnInit(): void  {
-    console.log(this.data,"hethi hiya ahaya jet ")
+ 
     this.suividocument=this.data[1]
    this.demande= this.data[0];
    this.service.getDemandes().subscribe(
@@ -49,10 +49,10 @@ export class TraiterDemandeComponent implements OnInit {
  }
 
   deleteDemande(id:number){
-    console.log(id);    
+   
     this.service.deleteDemande(id).subscribe(
       data=>{
-        console.log(data);
+   
         this.service.getDemandes().subscribe(
           data=>{ console.log("response recieved");
           
@@ -72,14 +72,15 @@ export class TraiterDemandeComponent implements OnInit {
  }
  opendialog(item:any){
   this.dialog.open(PlanEnlevementComponent, {
-    width:'35%',
+    width:'43%',
+    height:'54%',
     data:[item,this.suividocument]
    });
 }
 opendialogg(){
   this.dialog.open(InscriptionSortieDocComponent, {
     width:'60%',
-    
+    height:'58%',
    });
 }
 onNoClickkk():void

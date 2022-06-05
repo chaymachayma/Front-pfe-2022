@@ -15,14 +15,12 @@ import { InscriptionSortieDocComponent } from '../inscription-sortie-doc/inscrip
   styleUrls: ['./bordereaux.component.scss']
 })
 export class BordereauxComponent implements OnInit {
- 
-  Datedeversemnent2emeage:any;
-  LocalDate:String=new Date().toLocaleString();
+  
   doc:SuiviDocument[]=[];
  suividocument=new SuiviDocument()
   searchValue!:string;
  
-  displayedColumns: string[]=['id','chapitre_comptable','numero_document','date_De_creation_Du_Document','codedocument','numero_d_ordre','nombre_De_documents','Datedeversemnent2emeage'];
+  displayedColumns: string[]=['chapitre_comptable','numero_document','date_De_creation_Du_Document','codedocument','numero_d_ordre','nombre_De_documents'];
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -35,8 +33,7 @@ export class BordereauxComponent implements OnInit {
       this.service.getDOcumentById(id).subscribe(
         data=>{ console.log("response recieved");
         this.dataSource=new MatTableDataSource([data]) ;
-        console.log(id)
-        console.log(data)
+       
                  
         },
         error=>console.log("exception occured")
@@ -54,5 +51,5 @@ export class BordereauxComponent implements OnInit {
       width:'60%',
       
      });
-//  this.dataSource=this.data
+ 
 }}

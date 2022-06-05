@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./consulter-direction.component.css']
 })
 export class ConsulterDirectionComponent implements OnInit {
- //direction:Direction=new Direction;;
+ 
  id!:number 
   direction=new Direction();
   constructor(private service:DirectionService,private route: ActivatedRoute,

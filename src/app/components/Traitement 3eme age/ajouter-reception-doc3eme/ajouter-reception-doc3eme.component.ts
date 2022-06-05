@@ -38,27 +38,27 @@ export class AjouterReceptionDoc3emeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-      console.log(this.data, "amal")
+      
       this.suividocument = this.data[0]
       this.selecteDID1 = this.data[0].designation_Nomenclature.id;
       this.selecteDID2 = this.data[0].libelleDirection.id;
       this.selecteDID3 = this.data[0].codedirection.id;
-      this.selecteDID4=this.data[0].code_centre.id;
+      this.selecteDID4 = this.data[0].code_centre.id;
       await this.service.getDirections().subscribe(
           res => {
-              console.log(res, 'directionservice')
+            
               this.libelleDirections = res,
               this.codeDirection = res,
                   this.serviice.getNomenclatures().subscribe(
                       res => {
-                          console.log(res, "nomenclature service")
+                          
                           this.designation_Nomenclatures = res
                           
                              this.servicee.getCentreArchive().subscribe(
                                res=>{
-                                 console.log(res,'hh')
-                                 this.code_centres=res,
-                                 console.log(this.code_centres,10)
+                                
+                                 this.code_centres=res
+                                
                                },
                                error=>console.log(error)
                              )
@@ -66,7 +66,6 @@ export class AjouterReceptionDoc3emeComponent implements OnInit {
                       },
                       error => console.log(error)
                   )
-              console.log(this.designation_Nomenclatures, 'nomenclature local')
           },
           error => console.log(error)
 
@@ -82,19 +81,24 @@ res=>{
   
   public enregistre() {
       
-      this.service.getDirectionById(this.selecteDID1).subscribe(
+      this.service.getDirectionById(this.selecteDID2).subscribe(
           res => {
               this.suividocument.libelleDirection = res
-              console.log(this.suividocument)
+             
 
-              this.serviice.getNomenclatureById(this.selecteDID2).subscribe(
+              this.service.getDirectionById(this.selecteDID3).subscribe(
+                res => {
+                    this.suividocument.codedirection = res
+                 
+
+              this.serviice.getNomenclatureById(this.selecteDID1).subscribe(
                   res => {
                       this.suividocument.designation_Nomenclature= res
-                      console.log(this.suividocument)
+                   
 
                       this.servicee.getCentreArchiveById(this.selecteDID4).subscribe(
                         res=>{this.suividocument.code_centre=res     
-                          console.log(this.suividocument);
+                          
 
                           this._service.createDocument(this.suividocument).subscribe(
 
@@ -102,19 +106,20 @@ res=>{
                                   console.log("reponse received");
                               },
                               error => {
-                                  console.log(this.suividocument, "ahmed")
+                                 
                                   console.log("exception occured");
                               }
                           )
                   },
                error=>{console.log(error);}
-        )},
+            )},
 
                   error => { console.log(error) }
-              )
-          },
+              )},
           error => { console.log(error) }
-      )
+      ) },
+      error=>{console.log(error);}
+   )
   }
 
 
@@ -129,11 +134,9 @@ res=>{
           console.log(result);
           if (result.isConfirmed) {
 
-              // this.suividocument.date_De_creation_Du_Document=;
-              //this.suividocument.chapitre_comptable="";       
-              // this.suividocument.nombre_De_pages = 
-              //this.suividocument.nombre_De_documents=;
-              //this.suividocument.limite_de_conservation_1ere_age = "";
+            
+              this.suividocument.chapitre_comptable="";       
+            
               this.dialogRef.close();
           }
       })

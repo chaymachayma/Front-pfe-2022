@@ -20,12 +20,12 @@ export class ReceptionPhysiqueDocComponent implements OnInit {
 
   suividocument=new SuiviDoc2emeAge();
   date_De_creation_Du_Document:any;
-  //LocalDate:String=new Date().toLocaleString();
+
    Datedeversemnent2emeage:any;
    LocalDate:String=new Date().toLocaleString();
    doc:SuiviDoc2emeAge[]=[];
    searchValue!:string;
-   displayedColumns: string[]=[/*'code_centre',*/'libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','nombre_De_documents','nbrPhy','ecart','date_De_creation_Du_Document','Datedeversemnent2emeage','action'];
+   displayedColumns: string[]=['libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','nombre_De_documents','nbrPhy','ecart','date_De_creation_Du_Document','action'];
    
    dataSource!: MatTableDataSource<any>;
    @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -35,20 +35,38 @@ export class ReceptionPhysiqueDocComponent implements OnInit {
  
    ngOnInit(): void {
      this.service.getDocuments().subscribe(
-       data=>{ console.log(data,"response recieved");      
-       data.forEach((item:any)=>{      
-               this.doc.push(item)
+       data=>{ console.log(data,"itemponse recieved");  
+       
+
+       data.forEach((item:any)=>{  
+        let d=new Date(item.date_De_creation_Du_Document)
+       
+        let y= d.getFullYear()
+        let g=item.limite_de_conservation_1ere_age
+      
+        let x=item.limite_de_conservation_1ere_age.substr(0,g.indexOf(" "))
+       
+        let q=parseInt(x)
+       
+        let r=y+q
+        let date_alert=r.toString()
+        
+        d.setFullYear(r)
+        let date_dejour= new Date()
+        
+        if(!(date_dejour<d)){
+          this.doc.push(item)
+        }       
        }
         )
        this.dataSource=new MatTableDataSource(this.doc) ;              
        },
        error=>console.log("exception occured")
        )
-       console.log(this.doc,"doc");
+      
    }
    opendialog(item :any){
-     console.log(item,'hethi eli neb3ethou');
-     console.log("hne 7echetna biha")
+    
     this.dialog.open(AjouterReceptionDocComponent, {
 
       width:'36%',

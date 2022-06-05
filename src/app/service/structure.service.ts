@@ -21,7 +21,7 @@ export class StructureService {
     return this._http.get<any>("http://localhost:8083/api/test/Structures");   
   }
 
-  getStructureById(id:number):Observable<any>{
+  getStructureById(id:any):Observable<any>{
     return this._http.get<any>(this.baseUrl + id);
   }
 

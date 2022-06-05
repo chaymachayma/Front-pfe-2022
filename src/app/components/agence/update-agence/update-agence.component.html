@@ -1,5 +1,5 @@
 
-<h1 mat-dialog-title>Modification d'une nouvelle Agence</h1>
+<h1 mat-dialog-title>Modification d'une agence</h1>
 <br>
 <div mat-dialog-content>
 <form #enregForm="ngForm" >
@@ -11,36 +11,36 @@
 <input formConroleName="codeAgence" matInput placeholder="" type="text" id="codeAgence" 
  name="code" [(ngModel)]="data.agence.codeAgence"  required #codeAgence="ngModel"           
 [class.is-invalid]="codeAgence.invalid &&codeAgence.touched"   >
-<small class="text-danger" [class.d-none]="codeAgence.valid || codeAgence.untouched">Code Agence is required field</small> 
+<small class="text-danger" [class.d-none]="codeAgence.valid || codeAgence.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 
 <mat-form-field  appearance="outline">
-<mat-label for="libelleAgence" >Libellé Agence: </mat-label> 
+<mat-label for="libelleAgence" >Libellé agence: </mat-label> 
 <input formConroleName="libelleAgence" matInput placeholder=""pattern="" type="text" id="libelleAgence"  name="libelleAgence"   [(ngModel)]="data.agence.libelleAgence"   required #libelleAgence="ngModel"           
 [class.is-invalid]="libelleAgence.invalid && libelleAgence.touched"   >
-<small class="text-danger" [class.d-none]="libelleAgence.valid || libelleAgence.untouched">Libellé agence is required field</small> 
+<small class="text-danger" [class.d-none]="libelleAgence.valid || libelleAgence.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 
 
 
 <mat-form-field appearance="outline">
-  <mat-label>Lieu d'archivage 1ere age </mat-label>
+  <mat-label>Lieu d'archivage 1er âge </mat-label>
   <mat-select formConroleName="lieu_d_archivage_1_ere_age" placeholder="" name="lieu1" [(ngModel)]="selectedId1" required #lieu_d_archivage_1_ere_age="ngModel"
    [class.is-invalid]="lieu_d_archivage_1_ere_age.invalid && lieu_d_archivage_1_ere_age.touched">
    <mat-option *ngFor="let lieu of lieux" [value]="lieu.id">{{lieu.lieu}}</mat-option >
   </mat-select>
   <small class="text-danger" [class.d-none]="lieu_d_archivage_1_ere_age.valid || 
-lieu_d_archivage_1_ere_age.untouched">veuiller choisir un lieu</small> 
+lieu_d_archivage_1_ere_age.untouched">Champs obligatoire</small> 
 </mat-form-field>
 <mat-form-field appearance="outline">
-  <mat-label>Lieu d'archivage 2eme age </mat-label>
+  <mat-label>Lieu d'archivage 2ème âge </mat-label>
   <mat-select formConroleName="lieu_d_archivage_2_eme_age" placeholder="" name="lieu" [(ngModel)]="selectedId2" 
   required #lieu_d_archivage_2_eme_age="ngModel" [class.is-invalid]="lieu_d_archivage_2_eme_age.invalid && lieu_d_archivage_2_eme_age.touched" >
   <mat-option *ngFor="let lieu of lieux" [value]="lieu.id">{{lieu.lieu}}</mat-option >
   </mat-select>
-  <small class="text-danger" [class.d-none]="lieu_d_archivage_2_eme_age.valid || lieu_d_archivage_2_eme_age.untouched">veuiller choisir un lieu</small> 
+  <small class="text-danger" [class.d-none]="lieu_d_archivage_2_eme_age.valid || lieu_d_archivage_2_eme_age.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 <div mat-dialog-actions [align]="'end'">

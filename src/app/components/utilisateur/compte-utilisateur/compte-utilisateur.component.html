@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Création d'un nouveau compte Utilisateur</h1>
+<h1 mat-dialog-title>Création d'un nouveau compte utilisateur</h1>
 <br>
 <div mat-dialog-content>
 <form #enregForm="ngForm" (ngSubmit)="opensweetalert()" >
@@ -7,14 +7,14 @@
     <mat-label  for="matricule" >Matricule: </mat-label>
     <input   matInput type="number" placeholder="" id="matricule"  name="matricules" [(ngModel)]="compte.matricule"  required  #matricule="ngModel"           
     [class.is-invalid]="matricule.invalid && matricule.touched"   >
-    <small class="text-danger" [class.d-none]="matricule.valid ||matricule.untouched">Matricule is required field</small> 
+    <small class="text-danger" [class.d-none]="matricule.valid ||matricule.untouched">Champs obligatoire</small> 
     </mat-form-field>
 
 <mat-form-field  appearance="outline">
 <mat-label  for="nom" >Nom: </mat-label>
 <input   matInput type="text" placeholder="" id="nom"  name="nom" [(ngModel)]="compte.nom"  required pattern="^[a-zA-Z]+[a-zA-Z ]*$" #nom="ngModel"           
 [class.is-invalid]="nom.invalid && nom.touched"   >
-<small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Nom is required field</small> 
+<small class="text-danger" [class.d-none]="nom.valid || nom.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 
@@ -22,14 +22,14 @@
 <mat-label for="prenom" >Prénom: </mat-label> 
 <input  matInput placeholder=""  id="prenom"  name="prenom" type="text" [(ngModel)]="compte.prenom" required pattern="^[a-zA-Z]+[a-zA-Z ]*$" #prenom="ngModel"           
 [class.is-invalid]="prenom.invalid && prenom.touched"   >
-<small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">Prénom is required field</small> 
+<small class="text-danger" [class.d-none]="prenom.valid || prenom.untouched">Champs obligatoire</small> 
 </mat-form-field>
 
 <mat-form-field  appearance="outline">
-  <mat-label for="password">Mot de Passe: </mat-label>
+  <mat-label for="password">Mot de passe: </mat-label>
    <input  matInput type="password" name="password" id="password" placeholder="" [(ngModel)]="compte.password"  required #password="ngModel"           
    [class.is-invalid]="password.invalid && password.touched"   >
-   <small class="text-danger" [class.d-none]="password.valid || password.untouched">Mot de passe is required field</small> 
+   <small class="text-danger" [class.d-none]="password.valid || password.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 
@@ -39,20 +39,20 @@
 <input matInput  type="email"  name="email" id="email" placeholder="" [(ngModel)]="compte.email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" 
 #email="ngModel" [class.is-invalid]="email.invalid && email.touched"/>
  <div *ngIf="email.errors && (email.invalid && email.touched)">
-   <small class="text-danger" *ngIf="email.errors['required']">Email is required field</small>
-   <small class="text-danger" *ngIf="email.errors['pattern']"> Entrer the valid Email</small>
+   <small class="text-danger" *ngIf="email.errors['required']">Champs obligatoire</small>
+   <small class="text-danger" *ngIf="email.errors['pattern']"> Entrer un Email valide</small>
  </div>
 </mat-form-field>
 
 
 
 <mat-form-field  appearance="outline">
-  <mat-label  for="libelleDirection" > libelle Direction</mat-label>
+  <mat-label  for="libelleDirection" > Libellé direction</mat-label>
   <mat-select placeholder="" name="libelle" [(ngModel)]="selectedId1" required #libelleDirection="ngModel"
   [class.is-invalid]="libelleDirection.invalid && libelleDirection.touched">
 <mat-option *ngFor="let lieu of lieux" value="{{lieu.id}}">{{lieu.libelleDirection}}</mat-option >
 </mat-select>
-  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">libelle Direction is required fied</small> 
+  <small class="text-danger" [class.d-none]="libelleDirection.valid || libelleDirection.untouched">Champs obligatoire</small> 
   </mat-form-field>
 
 

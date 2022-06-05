@@ -26,7 +26,7 @@ selected!:SuiviDocument
 doc:SuiviDocument[]=[];
 sortedData:SuiviDocument[];
 suividocument=new SuiviDocument()
-displayedColumns: string[] = ['id','codeDirection','chapitre_comptable','numero_document','nombre_De_pages','date_De_creation_Du_Document','date_d_entree_Du_Document','codedocument','numero_d_ordre','empl_physique','nombre_De_documents','limite_de_conservation_1ere_age','LibelleDirection','designation_Nomenclature','Destruction'];
+displayedColumns: string[] =['codeDirection','chapitre_comptable','numero_document','nombre_De_pages','date_De_creation_Du_Document','date_d_entree_Du_Document','codedocument','numero_d_ordre','empl_physique','nombre_De_documents','limite_de_conservation_1ere_age','LibelleDirection','designation_Nomenclature','Destruction'];
 dataSource!: MatTableDataSource<any>;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -46,42 +46,37 @@ data=>{ console.log("received response");
 this.dataSource=new MatTableDataSource(data) ;
 
 this.dataSource.paginator=this.paginator;
-//this.doc=data;
+ 
 
 this.sortedData=data.slice();
 
-console.log("slice",data.slice());
+ 
 
 },
 error=>console.log("exception occured")
 
 )
-console.log("hello",this.sortedData);
+ 
 }
 
 
 
 openDialoggg(id:number ) { 
-
-this._router.navigateByUrl(`/dashboard/destruction-document/${id}`)
-}
-
-inventaire(id:number){
     this.service.getDOcumentById(id).subscribe(
         res=>{
             
             let d=new Date(res.date_De_creation_Du_Document)
-            console.log(d,"avant") 
+            
             let y= d.getFullYear()
             let g=res.limite_de_conservation_1ere_age
-            console.log(g,"gg")
+          
             let x=res.limite_de_conservation_1ere_age.substr(0,g.indexOf(" "))
-            //console.log(x,"xxxxxxxx")
+        
             let q=parseInt(x)
-            //console.log(q,"qqqq")
+           
             let r=y+q
             let date_alert=r.toString()
-            //console.log(date_alert,"dddddd")
+           
             d.setFullYear(r)
             let date_dejour= new Date()
             
@@ -89,7 +84,41 @@ inventaire(id:number){
                 Swal.fire({
                     icon: 'error',
                     title: 'Attention...',
-                    text: 'le document n`a pas ancore fini son 1 ere age !',
+                    text: 'le document n`a pas encore fini son 1er âge car date courante < date alerte !',
+                   
+                  })
+            }
+            else
+this._router.navigateByUrl(`/dashboard/destruction-document/${id}`)
+}
+)
+
+}
+
+inventaire(id:number){
+    this.service.getDOcumentById(id).subscribe(
+        res=>{
+            
+            let d=new Date(res.date_De_creation_Du_Document)
+         
+            let y= d.getFullYear()
+            let g=res.limite_de_conservation_1ere_age
+     
+            let x=res.limite_de_conservation_1ere_age.substr(0,g.indexOf(" "))
+       
+            let q=parseInt(x)
+          
+            let r=y+q
+            let date_alert=r.toString()
+     
+            d.setFullYear(r)
+            let date_dejour= new Date()
+            
+            if(date_dejour<d){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Attention...',
+                    text: 'le document n`a pas encore fini son 1er âge car date courante < date alerte ! !',
                    
                   })
             }
@@ -134,19 +163,12 @@ return 0;
 }
 });
 }
-applyFilter(event: Event) {
- console.log(event)   
-const filterValue = (event.target as HTMLInputElement).value;
-this.dataSource.filter = filterValue.trim().toLowerCase();
 
-if (this.dataSource.paginator) {
-this.dataSource.paginator.firstPage();
-}
-}
 
 openDialog() {
 this.dialog.open(CreeDocumentComponent, {
-width:'35%'
+width:'40%',
+height:'80%'
 });
 }
 Onchange(item:any){

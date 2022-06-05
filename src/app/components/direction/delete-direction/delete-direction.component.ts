@@ -4,7 +4,7 @@ import { Direction } from 'src/app/models/direction';
 import { DirectionService } from 'src/app/service/direction.service';
 import { Location } from '@angular/common';
 import { Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-direction',
@@ -16,7 +16,7 @@ export class DeleteDirectionComponent implements OnInit {
   directions:any;
   direction=new Direction();
   constructor(private location: Location,private service:DirectionService,
-    private route: ActivatedRoute,private router: Router, @Inject(MAT_DIALOG_DATA) public data : any) { }
+    private route: ActivatedRoute,private router: Router, @Inject(MAT_DIALOG_DATA) public data : any,public dialogRef: MatDialogRef<DeleteDirectionComponent>) { }
 
   ngOnInit(): void {
     this.direction = this.data.direction;
@@ -34,14 +34,15 @@ export class DeleteDirectionComponent implements OnInit {
       this.service.deleteDirection(id).subscribe(
         data=>{
           console.log(data);
-          this.directions=this.service.getDirections();
-          //this.router.navigate(['deletedirection  ',id]);
+         this.return()
+          this.router.navigate(['/dashboard/gestionDirection']);
         },
         error=>console.error(error));
-        window.location.reload()
+      //  window.location.reload()
      
     }
     return(){
+this.dialogRef.close()
     } 
   }
 

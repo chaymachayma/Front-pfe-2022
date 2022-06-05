@@ -24,7 +24,7 @@ export class InventaireDocument2emeageComponent implements OnInit {
  suividocument=new SuiviDocument()
   searchValue!:string;
  
-  displayedColumns: string[] = ['id','chapitre_comptable','numero_document','nombre_De_pages','date_De_creation_Du_Document','date_d_entree_Du_Document','codedocument','numero_d_ordre','empl_physique','nombre_De_documents','Datedeversemnent2emeage','limite_de_conservation_1ere_age','action'];
+  displayedColumns: string[] = ['chapitre_comptable','numero_document','nombre_De_pages','date_De_creation_Du_Document','date_d_entree_Du_Document','codedocument','numero_d_ordre','empl_physique','nombre_De_documents','limite_de_conservation_1ere_age'];
   dataSource!: MatTableDataSource<any>;
 id!:number
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -36,26 +36,16 @@ id!:number
  ngOnInit(): void {
  this.suividocument=new SuiviDocument()
    this.id=this.route.snapshot.params['id']
-   console.log(this.id,"hetha id")
+ 
    this.service.getDOcumentById(this.id).subscribe(
-     data=>{console.log(data,"gg")
+     data=>{console.log(data)
      this.suividocument=data;
      this.dataSource=new MatTableDataSource([data]);
-     console.log(this.dataSource,"datasource")
+     console.log(this.dataSource)
            },
      error=>console.log(error));
   
     }
- 
-   
-   getdate(){
-    this.LocalDate=new Date().toLocaleString();
-    this.Datedeversemnent2emeage=this.LocalDate;
-    //this.dialog.open(AjoutDateVersement2emeAgeComponent, {
-      //width:'50%',
-     //} )
-    }
-
     
     opendialog(){
       localStorage.setItem("suividocumentid",this.id.toString())

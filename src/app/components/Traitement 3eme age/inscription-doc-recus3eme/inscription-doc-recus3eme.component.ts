@@ -9,7 +9,7 @@ import { SuiviDoc2emeAgeServiceService } from 'src/app/service/suivi-doc2eme-age
 import { SuiviDocumentService } from 'src/app/service/suivi-document.service';
 import { SuiviDocument3emeAgeService } from 'src/app/service/suivi-document3eme-age.service';
 import { InvitationMembresComponent } from '../invitation-membres/invitation-membres.component';
-import { SupprimerDocComponent } from '../supprimer-doc/supprimer-doc.component';
+
 
 @Component({
   selector: 'app-inscription-doc-recus3eme',
@@ -21,7 +21,7 @@ export class InscriptionDocRecus3emeComponent implements OnInit {
  
   suividocument=new SuiviDoc3emeAge();
   date_De_creation_Du_Document:any;
-  //LocalDate:String=new Date().toLocaleString();
+  
   Datedeversemnent2emeage:any;
   LocalDate:String=new Date().toLocaleString();
   doc:SuiviDoc3emeAge[]=[];
@@ -36,27 +36,20 @@ export class InscriptionDocRecus3emeComponent implements OnInit {
   ngOnInit(): void {
     this._service.getDocuments().subscribe(
       data=>{
-        console.log(data,"hethi 2eme age")
+    
         this.dataSource=new MatTableDataSource(data)
         
       }
     )
 }     
    openDialooogg(){
-    //localStorage.setItem("suividocumentid",this.id.toString())
+    
     this.dialog.open(InvitationMembresComponent, {
      width:'36%',      
      });
   }
 
-  openDialoogg(item : any) { 
-    this.dialog.open(SupprimerDocComponent, {
-      width:'41%',
-      data : {
-        suividocument : item
-      }
-    });   
-  }
+
 
 
  opendialogg(){

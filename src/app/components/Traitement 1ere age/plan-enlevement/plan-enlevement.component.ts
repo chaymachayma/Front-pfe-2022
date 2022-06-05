@@ -20,17 +20,17 @@ export class PlanEnlevementComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<PlanEnlevementComponent>,private service:StructureService,private dialog:MatDialog,private router:Router) { }
 
   ngOnInit(): void {
-    console.log(this.data,"hmmmmmmmmmmmmm")
+ 
     this.suividocument=this.data[1]
   }
   
 envoyer(){
 const data={
-  toEmail: "najjaramal220@gmail.com" ,
+  toEmail: "responsabledag@gmail.com" ,
   subject : "test",
   body :{
     code:this.planEnlevement.code,
-    date:this.planEnlevement.date_,
+    date_:this.planEnlevement.date_,
     materiel:this.planEnlevement.materiel,
     humain:this.planEnlevement.humain
 
@@ -38,7 +38,7 @@ const data={
   } 
 
 }
-console.log(data,"data")
+ 
 this.service.sendmaill(data).subscribe(
   res=>console.log("emailsended"),
   err=>console.log(err)
@@ -52,7 +52,7 @@ opendialog(item:any){
    })
    }
 
-  //this._router.navigate(['dashboard/demandedeversement']);
+  
   
 
 opensweetalert(){    
@@ -65,7 +65,7 @@ opensweetalert(){
         this.dialogRef.close()
         this.opendialog(1)
 
-        //this.router.navigate(['/dashboard/bordereaux'])
+    
       })
 }
 }

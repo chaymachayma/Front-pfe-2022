@@ -84,9 +84,7 @@ import { AjouterEmplacementComponent } from './components/Traitement 2eme age/aj
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {NgxPrintModule} from 'ngx-print';
 import { FicheDeRenseignement2emeAgeComponent } from './components/Traitement 2eme age/fiche-de-renseignement2eme-age/fiche-de-renseignement2eme-age.component';
-import { AjoutDateVersement2emeAgeComponent } from './components/Traitement 1ere age/ajout-date-versement2eme-age/ajout-date-versement2eme-age.component';
 import { InscriptionDocRecus3emeComponent } from './components/Traitement 3eme age/inscription-doc-recus3eme/inscription-doc-recus3eme.component';
-import { SupprimerDocComponent } from './components/Traitement 3eme age/supprimer-doc/supprimer-doc.component';
 import { InvitationMembresComponent } from './components/Traitement 3eme age/invitation-membres/invitation-membres.component';
 import { ReceptionDocComponent } from './components/Traitement 3eme age/reception-doc/reception-doc.component';
 import { AjouterReceptionDoc3emeComponent } from './components/Traitement 3eme age/ajouter-reception-doc3eme/ajouter-reception-doc3eme.component';
@@ -95,7 +93,22 @@ import { LettreApprobationComponent } from './components/Traitement 3eme age/let
 import { ApprobationGlobaleOuPartielleComponent } from './components/Traitement 3eme age/approbation-globale-ou-partielle/approbation-globale-ou-partielle.component';
 import { DocumentsDetruitsComponent } from './components/Traitement 3eme age/documents-detruits/documents-detruits.component';
 import { DocumentsHistoriquesComponent } from './components/Traitement 3eme age/documents-historiques/documents-historiques.component';
-
+import { ChartComponent } from './components/charts/chart/chart.component';
+import { ChartPoucentage1Component } from './components/charts/chart-poucentage1/chart-poucentage1.component';
+import { CentralisationDemandesComponent } from './components/Consultation 2eme age/centralisation-demandes/centralisation-demandes.component';
+import { ConsulterDemandeComponent } from './components/Consultation 2eme age/consulter-demande/consulter-demande.component';
+import { DechargeDeTransfertComponent } from './components/Consultation 2eme age/decharge-de-transfert/decharge-de-transfert.component';
+import { DocumentParAgenceComponent } from './components/Consultation 2eme age/document-par-agence/document-par-agence.component';
+import { EnvoyerDemandeConsultationComponent } from './components/Consultation 2eme age/envoyer-demande-consultation/envoyer-demande-consultation.component';
+import { ExecutionDemandesConsultationsComponent } from './components/Consultation 2eme age/execution-demandes-consultations/execution-demandes-consultations.component';
+import { FicheDeSortieComponent } from './components/Consultation 2eme age/fiche-de-sortie/fiche-de-sortie.component';
+import { ListeDemandeConsultationComponent } from './components/Consultation 2eme age/liste-demande-consultation/liste-demande-consultation.component';
+import { ReceptionDesDocumentComponent } from './components/Consultation 2eme age/reception-des-document/reception-des-document.component';
+import { ReceptionEtValidationComponent } from './components/Consultation 2eme age/reception-et-validation/reception-et-validation.component';
+import { ReceptionParStructuresComponent } from './components/Consultation 2eme age/reception-par-structures/reception-par-structures.component';
+import { ValidationComponent } from './components/Consultation 2eme age/validation/validation.component';
+import { ValidationDemandeConsultationComponent } from './components/Consultation 2eme age/validation-demande-consultation/validation-demande-consultation.component';
+import { LettreTransfertComponent } from './components/Consultation 2eme age/lettre-transfert/lettre-transfert.component';
 
 @NgModule({
   declarations: [
@@ -162,9 +175,9 @@ import { DocumentsHistoriquesComponent } from './components/Traitement 3eme age/
     ClassementDocsComponent,
     AjouterEmplacementComponent,
     FicheDeRenseignement2emeAgeComponent,
-    AjoutDateVersement2emeAgeComponent,
+
     InscriptionDocRecus3emeComponent,
-    SupprimerDocComponent,
+   
     InvitationMembresComponent,
     ReceptionDocComponent,
     AjouterReceptionDoc3emeComponent,
@@ -173,6 +186,22 @@ import { DocumentsHistoriquesComponent } from './components/Traitement 3eme age/
     ApprobationGlobaleOuPartielleComponent,
     DocumentsDetruitsComponent,
     DocumentsHistoriquesComponent,
+    ChartComponent,
+    ChartPoucentage1Component,
+    CentralisationDemandesComponent,
+    ConsulterDemandeComponent,
+    DechargeDeTransfertComponent,
+    DocumentParAgenceComponent,
+    EnvoyerDemandeConsultationComponent,
+    ExecutionDemandesConsultationsComponent,
+    FicheDeSortieComponent,
+    ListeDemandeConsultationComponent,
+    ReceptionDesDocumentComponent,
+    ReceptionEtValidationComponent,
+    ReceptionParStructuresComponent,
+    ValidationComponent,
+    ValidationDemandeConsultationComponent,
+    LettreTransfertComponent,
    
 
     

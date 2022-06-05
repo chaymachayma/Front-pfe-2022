@@ -52,7 +52,6 @@ import { GestionParametragesComponent } from './components/utilisateur/gestion-p
 import { UpdateCompteComponent } from './components/utilisateur/update-compte/update-compte.component';
 import { RoleGuard } from './role.guard';
 import { InscriptionDocRecus3emeComponent } from './components/Traitement 3eme age/inscription-doc-recus3eme/inscription-doc-recus3eme.component';
-import { SupprimerDocComponent } from './components/Traitement 3eme age/supprimer-doc/supprimer-doc.component';
 import { InvitationMembresComponent } from './components/Traitement 3eme age/invitation-membres/invitation-membres.component';
 import { ReceptionDocComponent } from './components/Traitement 3eme age/reception-doc/reception-doc.component';
 import { AjouterReceptionDoc3emeComponent } from './components/Traitement 3eme age/ajouter-reception-doc3eme/ajouter-reception-doc3eme.component';
@@ -60,6 +59,14 @@ import { ApprobationTableauDeSyntheseComponent } from './components/Traitement 3
 import { ApprobationGlobaleOuPartielleComponent } from './components/Traitement 3eme age/approbation-globale-ou-partielle/approbation-globale-ou-partielle.component';
 import { DocumentsDetruitsComponent } from './components/Traitement 3eme age/documents-detruits/documents-detruits.component';
 import { DocumentsHistoriquesComponent } from './components/Traitement 3eme age/documents-historiques/documents-historiques.component';
+import { CentralisationDemandesComponent } from './components/Consultation 2eme age/centralisation-demandes/centralisation-demandes.component';
+import { ValidationComponent } from './components/Consultation 2eme age/validation/validation.component';
+import { ExecutionDemandesConsultationsComponent } from './components/Consultation 2eme age/execution-demandes-consultations/execution-demandes-consultations.component';
+import { ListeDemandeConsultationComponent } from './components/Consultation 2eme age/liste-demande-consultation/liste-demande-consultation.component';
+import { DechargeDeTransfertComponent } from './components/Consultation 2eme age/decharge-de-transfert/decharge-de-transfert.component';
+import { ReceptionDesDocumentComponent } from './components/Consultation 2eme age/reception-des-document/reception-des-document.component';
+import { ReceptionParStructuresComponent } from './components/Consultation 2eme age/reception-par-structures/reception-par-structures.component';
+import { ReceptionEtValidationComponent } from './components/Consultation 2eme age/reception-et-validation/reception-et-validation.component';
 
 const routes: Routes = [
   {
@@ -112,7 +119,7 @@ const routes: Routes = [
       {path:'modifierSortie1ere/:id',component:ModifierSortieDocComponent,canActivate:[AuthGuard]},
       {path:'ConsulterSortie1ere/:id',component:ConsulterSortieDocComponent,canActivate:[AuthGuard]},
       {path:'inventaire/:id',component:InventaireDocument2emeageComponent,canActivate:[AuthGuard]},
-      { path:'destruction-document',component:DestructionDocumentComponent,canActivate:[AuthGuard]},
+      
       {path:'destruction-document/:id',component:DestructionDocumentComponent,canActivate:[AuthGuard]},
      //demande
     {path:'liste-demande-versement',component: ListeDemandeVersementComponent,canActivate:[AuthGuard]},
@@ -157,9 +164,7 @@ const routes: Routes = [
     { path:'inscription3eme',
       component: InscriptionDocRecus3emeComponent,canActivate:[AuthGuard]
     },
-    { path:'supprimerDoc',
-    component: SupprimerDocComponent,canActivate:[AuthGuard]
-    },
+   
     { path:'invitationMembre',
     component: InvitationMembresComponent,canActivate:[AuthGuard]
     },
@@ -176,7 +181,7 @@ const routes: Routes = [
     }
     ,
     {
-      path:'DocumentsDetruits/:id',
+      path:'DocumentsDetruits',
       component:DocumentsDetruitsComponent,canActivate:[AuthGuard]
       
     }
@@ -185,7 +190,37 @@ const routes: Routes = [
       path:'DocumentsHistriques/:id',
       component:DocumentsHistoriquesComponent,canActivate:[AuthGuard]
       
+    },
+    ////consultation document 2eme
+    {
+      path:'centralisation',
+      component:CentralisationDemandesComponent,canActivate:[AuthGuard]
+    },
+    {
+      path:'validation/:id',
+      component:ValidationComponent,canActivate:[AuthGuard]
     }
+ 
+    ,
+    {
+      path:'execution',
+      component:ExecutionDemandesConsultationsComponent,canActivate:[AuthGuard]
+    }
+ ,  {
+  path:'liste-demande-Consultation',
+  component: ListeDemandeConsultationComponent,canActivate:[AuthGuard]
+},
+{
+  path:'decharge/:id',component:DechargeDeTransfertComponent,canActivate:[AuthGuard]
+},
+{path:'reception/:id',component:ReceptionDesDocumentComponent,canActivate:[AuthGuard]
+}
+,
+{path:'receptionparstructure/:id',component:ReceptionParStructuresComponent,canActivate:[AuthGuard]
+}
+,
+{path:'receptionetvalidation',component:ReceptionEtValidationComponent,canActivate:[AuthGuard]
+}
 
  
 ]},//

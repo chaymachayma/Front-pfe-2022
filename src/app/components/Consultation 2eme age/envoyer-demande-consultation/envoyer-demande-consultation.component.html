@@ -1,0 +1,150 @@
+<h1 mat-dialog-title>Envoyer une demande de consultation</h1>
+<br>
+<div mat-dialog-content>
+<form #enregForm="ngForm" >
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="num_dde" >Numéro demande</mat-label>
+<input  matInput placeholder="" type="number" id="num_dde" 
+name="num" [(ngModel)]="demande.num_dde"  required #num_dde="ngModel"           
+[class.is-invalid]=" num_dde.invalid && num_dde.touched"   >
+<small class="text-danger" [class.d-none]=" num_dde.valid ||  num_dde.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+<mat-form-field  appearance="outline">
+<mat-label  for=" date_dde" >Date de la demande : </mat-label>
+<input  matInput placeholder="" type="date" id=" date_dde" 
+name="datedde" [(ngModel)]=" demande. date_dde"  required #date_dde="ngModel"           
+[class.is-invalid]=" date_dde.invalid && date_dde.touched"   >
+<small class="text-danger" [class.d-none]=" date_dde.valid || date_dde.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="nombre_de_copie" >Nombre de copie: </mat-label>
+<input matInput placeholder="" type="number" id="objet" 
+name="nbr" [(ngModel)]="demande.nombre_de_copie"  required #nombre_de_copie="ngModel"           
+[class.is-invalid]="nombre_de_copie.invalid && nombre_de_copie.touched"   >
+<small class="text-danger" [class.d-none]="nombre_de_copie.valid || nombre_de_copie.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for=" date" >Date de réintégration (retour du document) : </mat-label>
+<input  matInput placeholder="" type="date" id=" date_" 
+name="datedde" [(ngModel)]=" demande.date_retour"  required #date_retour="ngModel"           
+[class.is-invalid]="date_retour.invalid && date_retour.touched"   >
+<small class="text-danger" [class.d-none]=" date_retour.valid || date_retour.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for=" datesortie" >Date de sortie du document: </mat-label>
+<input  matInput placeholder="" type="date" id=" datesortie" 
+name="datedde" [(ngModel)]=" demande.date_sortie"  required #date_sortie="ngModel"           
+[class.is-invalid]="date_sortie.invalid && date_sortie.touched"   >
+<small class="text-danger" [class.d-none]=" date_sortie.valid || date_sortie.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="objet" >Objet: </mat-label>
+<input matInput placeholder="" type="text" id="objet" 
+name="obj" [(ngModel)]="demande.objet"  required #objet="ngModel"           
+[class.is-invalid]="objet.invalid && objet.touched"   >
+<small class="text-danger" [class.d-none]="objet.valid || objet.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+<mat-form-field  appearance="outline">
+<mat-label  for="num_Ordre" >Numéro ordre: </mat-label>
+<input matInput placeholder="" type="number" id="nbrCarton" 
+name="nbr" [(ngModel)]="demande.num_Ordre"  required #num_Ordre="ngModel"           
+[class.is-invalid]="num_Ordre.invalid &&num_Ordre.touched"   >
+<small class="text-danger" [class.d-none]="num_Ordre.valid || num_Ordre.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="TypeDocument" >Type document: </mat-label>
+<mat-select id="TypeDocument" type="select" placeholder="Choisir un type" 
+name="nbr" [(ngModel)]="demande.type_document"  required #type_document="ngModel"           
+[class.is-invalid]="type_document.invalid &&type_document.touched"   >
+<mat-option value="Document Original">Document original</mat-option>
+<mat-option value="Documennt Copie">Document copie</mat-option>
+</mat-select>
+
+<small class="text-danger" [class.d-none]="type_document.valid ||type_document.untouched">Champs obligatoire</small> 
+</mat-form-field>
+<mat-form-field  appearance="outline">
+<mat-label  for="Libellestructure" > Libellé structure: </mat-label>
+<mat-select placeholder="" name="libelle" [(ngModel)]="demande.libelle" required #libelle="ngModel"
+[class.is-invalid]="libelle.invalid && libelle.touched">
+<mat-option *ngFor="let item of  Structures" value="{{item.id}}">{{item.libelle}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]=" libelle.valid ||  libelle.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+<mat-form-field  appearance="outline">
+<mat-label  for="libelleAgence" > Libellé agence: </mat-label>
+<mat-select placeholder="" name=" libelleAgence" [(ngModel)]="demande.libelleAgence" required #libelleAgence="ngModel"
+[class.is-invalid]="libelleAgence.invalid && libelleAgence.touched">
+<mat-option *ngFor="let item of  Agences" value="{{item.id}}">{{item.libelleAgence}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]=" libelleAgence.valid ||  libelleAgence.untouched">Champs obligatoire</small>
+
+</mat-form-field>
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="Date_De_creation_Du_Document" > Date de création du Document: </mat-label>
+<mat-select placeholder="" name="Date_De_creation_Du_Document" [(ngModel)]="demande.date_De_creation_Du_Document " required #date_De_creation_Du_Document="ngModel"
+[class.is-invalid]="date_De_creation_Du_Document.invalid && date_De_creation_Du_Document.touched">
+<mat-option *ngFor="let item of Suividoc2eme" value="{{item.id}}">{{item.date_De_creation_Du_Document}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]=" date_De_creation_Du_Document.valid ||date_De_creation_Du_Document.untouched">Champs obligatoire</small> 
+</mat-form-field>
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="numDoc" >Numéro document </mat-label>
+<mat-select placeholder="" name="num" [(ngModel)]="demande.numero_document" required #numero_document="ngModel"
+[class.is-invalid]="numero_document.invalid && numero_document.touched">
+<mat-option *ngFor="let itemm of Suividoc2eme" value="{{itemm.id}}">{{itemm.numero_document}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]="numero_document.valid ||  numero_document.untouched"> Champs obligatoire</small> 
+</mat-form-field>
+
+<mat-form-field  appearance="outline">
+<mat-label  for="codeDoc" >Code document </mat-label>
+<mat-select placeholder="" name="code" [(ngModel)]="demande.codedocument" required #codedocument="ngModel"
+[class.is-invalid]="codedocument.invalid && codedocument.touched">
+<mat-option *ngFor="let itemm of Suividoc2eme" value="{{itemm.id}}">{{itemm.codedocument}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]="codedocument.valid || codedocument.untouched"> Champs obligatoire</small> 
+</mat-form-field>
+
+
+
+<mat-form-field  appearance="outline">
+<mat-label  for="numDoc" >Nombre document </mat-label>
+<mat-select placeholder="" name="bnum" [(ngModel)]="demande.nombre_De_documents" required #nombre_De_documents="ngModel"
+[class.is-invalid]="nombre_De_documents.invalid && nombre_De_documents.touched">
+<mat-option *ngFor="let itemmn of Suividoc2eme" value="{{itemmn.id}}">{{itemmn.nombre_De_documents}}</mat-option >
+</mat-select>
+<small class="text-danger" [class.d-none]="nombre_De_documents.valid ||  nombre_De_documents.untouched"> Champs obligatoire</small> 
+</mat-form-field>
+
+
+
+<button mat-raised-button [disabled]="enregForm.form.invalid" color="Success" type="Submit" (click)="Envoyer()">Envoyer</button>
+
+
+
+
+<br><br>

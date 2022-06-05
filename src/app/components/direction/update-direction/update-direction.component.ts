@@ -27,17 +27,14 @@ id:any;
 
   ngOnInit(): void {
    
-  
-      /////
+ 
       this.getLieu();
       this.selectedId1=this.data.direction.lieu_d_archivage_1_ere_age.id ;
       this.selectedId2=this.data.direction.lieu_d_archivage_2_eme_age.id ;
-     console.log(this.data.direction);
-     ////////
+    
      this.getType();
      this.selectedId3=this.data.direction.typeDirection.id ;
-     console.log(this.selectedId2);
-    console.log(this.data.selectedId2);
+ 
 
   }
   getType(){
@@ -52,7 +49,7 @@ id:any;
     }
   
    onModif(){
-    console.log(this.data.direction,"avant")
+  
   this.service.getLieuById(this.selectedId1).subscribe(
     res=> {
       this.data.direction.lieu_d_archivage_1_ere_age=res;
@@ -65,7 +62,7 @@ id:any;
           this.service.updateDirection(this.data.direction.id,this.data.direction).subscribe(
 
             data=>{
-                console.log(data,"data received")
+                console.log(data )
               },
             error=>console.error());
         }
@@ -81,7 +78,7 @@ id:any;
      
       icon:'warning',
       showCancelButton:true,
-      confirmButtonText:'oui,modifiez-le!',
+      confirmButtonText:'Oui,modifiez-le!',
       cancelButtonText:'Non,gardez-le'
         
     }).then((result) => {
@@ -92,14 +89,14 @@ id:any;
       if (result.value) {
         Swal.fire(
           'modifié!',
-        
+          'Votre direction a été modifié',
           'success'
         )
-      window.location.reload()
+ 
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
-        
+        'Votre direction n`a pas été modifié',
         'error'
       )
 
@@ -109,22 +106,6 @@ id:any;
 
   }
   retour(){
-    window.location.reload()
+ 
   }}
     
-//alert(){
-  //this.dialogService.OpenConfirmDialog('Etes vous sur de modifier cette direction')
-  //.afterClosed().subscribe(res=>{
-//if (res){
-  //this.service.updateDirection(this.id,this.direction);
-  //this.router.navigate(['/gestionDirection'])
-  //this.notservice.warn('modification avec succee');
-//}
-//else{
-  //this.service.updateDirection(this.id,this.direction).subscribe(
-    //data=>console.log(data),error=>console.error());
- // this.service.getDirections();
-  //this.router.navigate(['/gestionDirection'])
-//}
-  //});
-//}

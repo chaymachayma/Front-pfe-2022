@@ -31,10 +31,10 @@ export class AjoutInscriptionComponent implements OnInit {
   public dialogRef: MatDialogRef<ReceptionPhysiqueDocComponent>,private serviceee:SuiviDocumentService) { }
 
   ngOnInit(): void {
-    console.log(this.data,"amal")
+ 
     this.suividocument=this.data[0]
     this.getDirections()
-    console.log(this.libelleDirections)
+  
     this.getNomenclatures()
     this.getCentrePreArchivage()
     this.selected1=this.data[0].libelleDirection.id ;
@@ -42,9 +42,9 @@ export class AjoutInscriptionComponent implements OnInit {
    
     this._service.getDocuments().subscribe(
       data=>{
-        console.log(data,"hethi 2eme age")
+        
         this.data=data
-        console.log(this.suividocument,"suividocument")
+         
       }
     )
  
@@ -56,27 +56,29 @@ export class AjoutInscriptionComponent implements OnInit {
     
     this.service.getDirectionById(this.selected1).subscribe(
       res=>{this.suividocument.libelleDirection=res
-      console.log(this.suividocument)
+ 
 
       this.serviice.getNomenclatureById(this.selected3).subscribe(
         res=>{this.suividocument.designation_Nomenclature=res
       
-          console.log(this.suividocument)
+       
          
       this.servicee.getCentrePreArchivageById(this.selected2).subscribe(
         res=>{this.suividocument.code_centre=res     
-          console.log(this.suividocument);
+          
 
  
 
-console.log(this.suividocument,"lllll")
+
+this.suividocument.limite_de_conservation_2eme_age=this.suividocument.limite_de_conservation_2eme_age+" ans";
+
   this._service.createDocument(this.suividocument).subscribe(     
     
     data =>{
     console.log("reponse received");  
    },
    error =>{
-    console.log(this.suividocument,"ahmed")
+    
      console.log("exception occured");
     }
     )
@@ -95,18 +97,13 @@ console.log(this.suividocument,"lllll")
     opensweetalert(){
            
       Swal.fire(
-        'ajoutée!',
-        'Votre Document a été ajoutée',
+        'Ajouté!',
+        'Votre document a été ajouté',
         'success'
       ).then( result => {
         console.log(result);
         if(result.isConfirmed ){
-         
-        // this.suividocument.date_De_creation_Du_Document=;
-          //this.suividocument.chapitre_comptable="";       
-        // this.suividocument.nombre_De_pages = 
-          //this.suividocument.nombre_De_documents=;
-          //this.suividocument.limite_de_conservation_1ere_age = "";
+     
           this.dialogRef.close();
         }
       })
@@ -119,9 +116,9 @@ console.log(this.suividocument,"lllll")
   async getDirections() {
  await this.service.getDirections().subscribe(
     res=>{
-      console.log(res,'hh')
+ 
       this.libelleDirections=res,
-      console.log(this.libelleDirections,'jj')
+      console.log(this.libelleDirections)
     },
     error=>console.log(error)
   )
@@ -131,9 +128,9 @@ console.log(this.suividocument,"lllll")
 async getCentrePreArchivage()  {
   await this.servicee.getCentrePreArchivage().subscribe(
      res=>{
-       console.log(res,'hh')
+  
        this.code_centres=res,
-       console.log(this.code_centres,10)
+       console.log(this.code_centres)
      },
      error=>console.log(error)
    )
@@ -143,7 +140,7 @@ async getNomenclatures() {
  await this.serviice.getNomenclatures().subscribe(
    res=>{ 
      this.designation_Nomenclatures=res,
-     console.log(this.designation_Nomenclatures,'jj')
+     console.log(this.designation_Nomenclatures)
    },
     error=>console.log(error)
 

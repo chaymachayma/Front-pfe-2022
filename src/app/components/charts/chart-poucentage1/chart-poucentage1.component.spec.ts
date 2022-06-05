@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SupprimerDocComponent } from './supprimer-doc.component';
+import { ChartPoucentage1Component } from './chart-poucentage1.component';
 
-describe('SupprimerDocComponent', () => {
-  let component: SupprimerDocComponent;
-  let fixture: ComponentFixture<SupprimerDocComponent>;
+describe('ChartPoucentage1Component', () => {
+  let component: ChartPoucentage1Component;
+  let fixture: ComponentFixture<ChartPoucentage1Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SupprimerDocComponent ]
+      declarations: [ ChartPoucentage1Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SupprimerDocComponent);
+    fixture = TestBed.createComponent(ChartPoucentage1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

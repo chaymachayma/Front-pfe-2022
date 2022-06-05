@@ -27,10 +27,10 @@ export class UpdateStructureComponent implements OnInit {
     this.getLieu();
     this.selectedId1=this.data.structure.lieu_archivage1ereAge.id ;
     this.selectedId2=this.data.structure.lieu_archivage2emeAge.id ;
-   console.log(this.data.structure);
+   
 }
 enregStructure(){  
-  console.log(this.data.structure,"avant")
+  
   this._service.getLieuById(this.selectedId1).subscribe(
     res=> {
       this.data.structure.lieu_archivage1ereAge=res;
@@ -41,7 +41,7 @@ enregStructure(){
           this._service.updateStructure(this.data.structure.id,this.data.structure).subscribe(
 
             data=>{
-                console.log(data,"data received")
+                console.log(data)
               },
             error=>console.error());
         }
@@ -63,7 +63,7 @@ enregStructure(){
   
       icon:'warning',
       showCancelButton:true,
-      confirmButtonText:'oui,modifiez-le!',
+      confirmButtonText:'Oui,modifiez-le!',
       cancelButtonText:'Non,gardez-le'
         
     }).then((result) => {
@@ -74,12 +74,14 @@ enregStructure(){
       if (result.value) {
         Swal.fire(
           'modifié!',
+          'Votre structure a été modifié',
           'success'
         )
       window.location.reload()
       }else if (result.dismiss==Swal.DismissReason.cancel){
       Swal.fire(
         'Annulé',
+        'Votre structure n`a pas été modifié',
         'error'
       )
       }

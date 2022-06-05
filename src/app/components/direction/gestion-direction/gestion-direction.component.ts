@@ -54,21 +54,11 @@ export class GestionDirectionComponent implements OnInit {
     }
   
 
-updateDirection(id:number){
-  
-    this._router.navigate(['updatedirection',id]);
-  }
-  
  
-
-consulterDirection(id:number){
-  this._router.navigate(['consulterdirection',id]);
- }
- deleteDirection(id: number){
-  this._router.navigate(['deletedirection',id]);}
+ 
   openDialog() {
     this.dialog.open(CreedirectionComponent, {
-     width:'35%'
+     width:'45%'
     });
   }
 

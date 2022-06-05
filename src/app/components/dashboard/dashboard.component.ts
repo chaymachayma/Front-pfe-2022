@@ -3,6 +3,10 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
+import { DirectionService } from 'src/app/service/direction.service';
+import { StructureService } from 'src/app/service/structure.service';
+import { RegistrationService } from 'src/app/service/registration.service';
+import { AgenceService } from 'src/app/service/agence.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,30 +14,44 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
-
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver,private service:TokenService) {}
+  countDir=0
+  countStructure=0
+  countCompte=0
+  countAgence=0
+  constructor(private serrvice:AgenceService,private servicce:RegistrationService ,private servvice:StructureService,private breakpointObserver: BreakpointObserver,private service:TokenService,private sservice:DirectionService) {}
   ngOnInit(): void {
- console.log(  this.service.isAdmin())   
+  
+ this.sservice.getDirections().subscribe(
+  data=>{ console.log("response received");
+  
+          this.countDir=data.length 
+  },
+  error=>console.log("exception occured")
+)
+this.servvice.getStructures().subscribe(
+  data=>{ console.log("response recieved");
+  this.countStructure=data.length  
+  },
+  error=>console.log("exception occured")
+  
+  )
+
+  this.servicce.getComptes().subscribe(
+    data=>{ 
+      this.countCompte=data.length  
+    },
+    error=>console.log("exception occured")
+    
+    )
+
+    this.serrvice.getAgences().subscribe(
+      data=>{ 
+        this.countAgence=data.length  
+    },
+    error=>console.log("exception occured")
+    
+    )
+
   }
 
 

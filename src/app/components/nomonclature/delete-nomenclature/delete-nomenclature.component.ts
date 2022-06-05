@@ -34,7 +34,7 @@ export class DeleteNomenclatureComponent implements OnInit {
         data=>{
           console.log(data);
           this. nomenclatures=this.service.getNomenclatures();
-          //this.router.navigate(['deletedirection ',id]);
+         
         },
         error=>console.error(error)
         );

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { LoginInfo } from '../models/login-info';
-
+import { Compte } from '../models/compte';
 
 import { SignUpInfo } from '../models/sign-up-info';
 
@@ -19,7 +19,7 @@ const httpOptions={
 export class AuthService {
 
 
-
+  baseUrl:string="http://localhost:8083/api/test/authentification/";
   private signupUrl = 'http://localhost:8083/api/auth/signup';
   private signinUrl = 'http://localhost:8083/api/auth/';
   constructor(private http:HttpClient,private jwtHelper:JwtHelperService,
@@ -46,6 +46,17 @@ export class AuthService {
       password: login.password
     }, httpOptions);
   }
+   
+
+  
+    deleteCompteAuth(id:number): Observable<any>{
+    return this.http.delete<any>(this.baseUrl+id);
+    } 
+  
+    updateCompteAuth(id:number, compte:Compte):Observable<any>{
+      return this.http.put<any>(this.baseUrl + compte.id,compte);
+    }
+  
  
 
 

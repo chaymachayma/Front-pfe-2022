@@ -3,7 +3,11 @@
   
 
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .sidenav {
   width: 330px;
   background: #34469e;
@@ -63,7 +67,7 @@ color: #082096;
 }
 
 img{
-  margin-left:540px;
+  margin-left:500px;
   margin-top:5px
 }
 

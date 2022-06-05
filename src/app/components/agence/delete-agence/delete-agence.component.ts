@@ -31,12 +31,12 @@ export class DeleteAgenceComponent implements OnInit {
       )
   }}
   deleteAgence(id: number){
-    console.log(id);
+    
       this.service.deleteAgence(id).subscribe(
         data=>{
           console.log(data);
           this.agences=this.service.getAgences;
-          //this.router.navigate(['deletedirection  ',id]);
+      
         },
         error=>console.error(error));
         window.location.reload()

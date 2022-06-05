@@ -1,100 +1,85 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
     ">
     <br>
-    <h1 mat-dialog-title >inscription de sortie d'un document</h1>
+    <h1 mat-dialog-title >Inscription de sortie des documents</h1>
     <a class="btn btn-success"  role="button"  (click)="openDialog() ">+ Créer</a>
     
     <br>
     <div class="container">
         <div style="margin-top:10px;">
             <mat-form-field appearance="standard">
-                <mat-label>Filter</mat-label>
+                <mat-label>Rechercher</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
               </mat-form-field>
-              
               <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header="id" >
-                   id
-                  </th>
-                  <td mat-cell *matCellDef="let suividocument">{{suividocument.id}}</td>
-                </ng-container>
-
-            
-              
               
                 <ng-container matColumnDef="chapitre_comptable">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="chapitre_comptable" >
-                     Chapitre Comptable
+                     Chapitre comptable
                     </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.chapitre_comptable}}</td>
                   </ng-container>
                   <ng-container matColumnDef="numero_document">
  
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="numero_document">
-                      Numero Document 
+                      Numéro document 
                     </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.numero_document}}</td>
                   </ng-container>
                   <ng-container matColumnDef="codedocument">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="codedocument" >
-                      code document 
+                      Code document 
                     </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.codedocument}}</td>
                   </ng-container>
                   <ng-container matColumnDef="numero_d_ordre">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header="numero_d_ordre" >numero d'ordre
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="numero_d_ordre" >Numéro d'ordre
                      </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.numero_d_ordre}}</td>
                   </ng-container>
                   <ng-container matColumnDef="nombre_De_documents">
                     <th mat-header-cell *matHeaderCellDef  mat-sort-header="nombre_De_documents">
-                      Nombre de Documents
+                      Nombre de document
                     </th>
                     <td mat-cell *matCellDef="let suividocument"> {{suividocument. nombre_De_documents}} </td>
                   </ng-container>
                  <ng-container matColumnDef="nombre_De_pages">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="nombre_De_pages">
-                     Nombre de pages
+                     Nombre de page
                     </th>
                     <td mat-cell *matCellDef="let suividocument">{{suividocument.nombre_De_pages}}</td>
                   </ng-container>
                   <ng-container matColumnDef="date_De_creation_Du_Document">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header="date_De_creation_Du_Document" >
-                      Date de creation du document
+                      Date de création du document
                     </th>
-                    <td mat-cell *matCellDef="let suividocument">{{ LocalDate}}</td>
+                    <td mat-cell *matCellDef="let suividocument">{{suividocument.date_De_creation_Du_Document}}</td>
                   </ng-container>
               
 
                   <ng-container matColumnDef="libelleDirection">
                     <th mat-header-cell *matHeaderCellDef  mat-sort-header="libelleDirection">
-                    Libelle Direction
+                    Libellé direction
                     </th>
                     <td mat-cell *matCellDef="let suividocument"> {{suividocument.libelleDirection.libelleDirection}} </td>
                   </ng-container>
 
                   <ng-container matColumnDef="designation_Nomenclature">
                     <th mat-header-cell *matHeaderCellDef  mat-sort-header="designation_Nomenclature">
-                    Designation Nomenclature
+                    Désignation nomenclature
                     </th>
                     <td mat-cell *matCellDef="let suividocument"> {{suividocument.designation_Nomenclature.designation_Nomenclature}} </td>
                   </ng-container>
 
-                  <ng-container matColumnDef="Datedeversemnent2emeage">
-                    <th mat-header-cell *matHeaderCellDef  mat-sort-header="Datedeversemnent2emeage">
-                        Date de sortie
-                    </th>
-                    <td mat-cell *matCellDef="let suividocument">{{LocalDate}}</td>
-                  </ng-container>
+                 
 
 
                   <ng-container matColumnDef="action">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                     <td mat-cell *matCellDef="let row"> 
                         <button mat-icon-button (click)="openDialoggg(row)" color="primary" >
-                            <mat-icon>search</mat-icon>
+                            <mat-icon>menu</mat-icon>
                         </button>  
                         <button mat-icon-button (click)="openDialogggg(row)" color="accent" >
                             <mat-icon>edit</mat-icon>

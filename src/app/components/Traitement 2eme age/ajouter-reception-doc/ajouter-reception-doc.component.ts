@@ -30,7 +30,7 @@ export class AjouterReceptionDocComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
   
-        console.log(this.data, "amal")
+        
         this.suividocument = this.data[0]
         this.selecteDID1 = this.data[0].designation_Nomenclature.id;
         this.selecteDID2 = this.data[0].libelleDirection.id;
@@ -63,48 +63,45 @@ res=>{
         this.suividocument.nbrPhy <= this.suividocument.nombre_De_documents
         this.suividocument.ecart = this.suividocument.nombre_De_documents - this.suividocument.nbrPhy
 
-        this.service.getDirectionById(this.selecteDID1).subscribe(
+        this.service.getDirectionById(this.selecteDID2).subscribe(
             res => {
                 this.suividocument.libelleDirection = res
-                console.log(this.suividocument)
+                
 
-                this.serviice.getNomenclatureById(this.selecteDID2).subscribe(
+                this.serviice.getNomenclatureById(this.selecteDID1).subscribe(
                     res => {
                         this.suividocument.designation_Nomenclature= res
 
-                        console.log(this.suividocument)
+                     
 
                         const data = {
-                            toEmail: "najjaramal220@gmail.com",
+                            toEmail: "responsabledag@gmail.com",
                             subject: "test",
                             body: this.suividocument.ecart
 
                         }
-                        if (this.suividocument.ecart == 0) {
+                        if (this.suividocument.ecart != 0) {
 
-                            console.log(this.suividocument.ecart, "gvudfgvudfvfu")
-                            console.log(data)
+                            console.log(this.suividocument.ecart)
+                         
                             this.servicce.sendmail(data).subscribe(
                                 res => console.log("emailsended"),
                                 err => console.log(err)
                             )
                         }
-
-                        console.log(this.suividocument, "lllll")
-                        console.log(this.suiviDoc2eme, "tableau")
-                        console.log(this.suividocument, "element")
+ 
                         
                         let x = this.suiviDoc2eme.findIndex(s => s.codedocument === this.suividocument.codedocument)
-                        console.log(x, "xxxx")
+                       
                         if (x < 0) {
-                            console.log(this.suividocument, "objet");
+                             
                             this._service.createDocument(this.suividocument).subscribe(
 
                                 data => {
                                     console.log("reponse received");
                                 },
                                 error => {
-                                    console.log(this.suividocument, "ahmed")
+                              
                                     console.log("exception occured");
                                 }
                             )
@@ -130,11 +127,9 @@ res=>{
             console.log(result);
             if (result.isConfirmed) {
 
-                // this.suividocument.date_De_creation_Du_Document=;
-                //this.suividocument.chapitre_comptable="";       
-                // this.suividocument.nombre_De_pages = 
-                //this.suividocument.nombre_De_documents=;
-                //this.suividocument.limite_de_conservation_1ere_age = "";
+                
+                this.suividocument.chapitre_comptable="";       
+             
                 this.dialogRef.close();
             }
         })

@@ -23,33 +23,42 @@ export class DestructionDocumentComponent implements OnInit {
   Date1: Date=new Date();
   LocalDate :String=new Date().toLocaleString();
 
-  displayedColumns: string[] = ['codedirection','libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','nombre_De_documents','date_De_creation_Du_Document','dateDestruction','action'];
+  displayedColumns: string[] = ['codedirection','libelleDirection','chapitre_comptable','codedocument','designation_Nomenclature','numero_document','numero_d_ordre','nombre_De_documents','date_De_creation_Du_Document','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dateDestruction: any;
   id!:number
+  documents:any;
+  document=new SuiviDocument()
  constructor(private route:ActivatedRoute,private service:SuiviDocumentService,private _router:Router ) { }
 
  ngOnInit(): void {
   this.suividocument=new SuiviDocument()
   this.id=this.route.snapshot.params['id']
-  console.log(this.id,"hetha id")
+ 
   this.service.getDOcumentById(this.id).subscribe(
-    data=>{console.log(data,"gg")
+    data=>{ 
     this.suividocument=data;
     this.dataSource=new MatTableDataSource([data]);
-    console.log(this.dataSource,"datasource")
+    console.log(this.dataSource)
           },
     error=>console.log(error));
    
    }
   
-   getdate(){
-   this.LocalDate=new Date().toLocaleString();
-   this.dateDestruction=this.LocalDate;
+   supprimer(id:number){
  
+    this.service.deleteDocument(id).subscribe(
+      data=>{
+        console.log(data);
+        this.documents=this.service.getDocuments();
+      },
+      error=>console.error(error)
+      );  
+    
+      
    }
 
  retour(){

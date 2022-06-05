@@ -44,19 +44,11 @@ export class GestionParametragesComponent implements OnInit {
     )
     }
    
-   updateCompte(id:number){
-     this._router.navigate(['update-compte',id]);
-   }
-   consulterCompte(id:number){
-    this._router.navigate(['consulter-compte',id]);
-  }
-  deleteCompte(id:number){
-    this._router.navigate(['delete-compte',id]);
-  }
+   
   
   openDialog() {
     this.dialog.open(CompteUtilisateurComponent, {
-     width:'35%'
+     width:'45%'
     });
   }
 
